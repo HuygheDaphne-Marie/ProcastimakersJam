@@ -19,7 +19,7 @@ public class DynamicWall : MonoBehaviour
     void Update()
     {
         Vector3 translation = new Vector3();
-        float distanceToMove = Mathf.Cos(Time.realtimeSinceStartup) * Distance * Time.deltaTime; // Todo: Improve
+        float distanceToMove = Mathf.Sin(Time.realtimeSinceStartup) * Distance * Time.deltaTime; // Todo: Improve
 
         if (IsMovingVertically)
         {
