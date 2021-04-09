@@ -9,6 +9,10 @@ public class CharacterMovement : MonoBehaviour
     float _speed = 5f;
     [SerializeField]
     float _rotationSpeed = 15f;
+
+
+    Vector2 _velocity;
+    Vector2 _rotation;
     Rigidbody _rigidBody;
 
     // Start is called before the first frame update
@@ -31,12 +35,9 @@ public class CharacterMovement : MonoBehaviour
 
     private void HandleMovement()
     {
-        var gamepad = Gamepad.current;
-        Vector2 movement = gamepad.leftStick.ReadValue();
-
-        if (movement != Vector2.zero)
+        if (_velocity != Vector2.zero)
         {
-            _rigidBody.velocity = new Vector3(movement.x * _speed, 0f, movement.y * _speed);
+            _rigidBody.velocity = new Vector3(_velocity.x * _speed, 0f, _velocity.y * _speed);
         }
         else
         {
@@ -46,11 +47,20 @@ public class CharacterMovement : MonoBehaviour
 
     private void HandleRotation()
     {
-        var gamepad = Gamepad.current;
-        Vector2 rotation = gamepad.rightStick.ReadValue();
+        if (_rotation != Vector2.zero)
+        {
+            Quaternion test = Quaternion.LookRotation(new Vector3(_rotation.x, 0f, _rotation.y), Vector3.up);
 
-        Quaternion quaternion = Quaternion.Euler(new Vector3(0f, rotation.x * _rotationSpeed, 0f));
+            _rigidBody.rotation = test;
+        }
+    }
 
-        _rigidBody.MoveRotation(_rigidBody.rotation * quaternion);
+    private void OnMove(InputValue inputValue)
+    {
+        _velocity = inputValue.Get<Vector2>();
+    }
+    private void OnTurn(InputValue inputValue)
+    {
+        _rotation = inputValue.Get<Vector2>();
     }
 }
