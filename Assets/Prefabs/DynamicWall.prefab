@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d5a5144e38f97f24889f9721472a3d52, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,5 +108,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84e8d9c8c7a2a7546927871fdccdca65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Distance: 5
-  IsMovingVertically: 0
+  Distance: 10
+  IsMovingVertically: 1
