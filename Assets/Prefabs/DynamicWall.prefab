@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5086838044852704433}
   m_Layer: 0
   m_Name: DynamicWall
-  m_TagString: Wall
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 71e7b29f8a57e3d4c884381944e39dc4, type: 2}
+  - {fileID: 2100000, guid: d5a5144e38f97f24889f9721472a3d52, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

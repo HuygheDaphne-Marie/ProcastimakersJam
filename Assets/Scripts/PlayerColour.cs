@@ -5,10 +5,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerColour : MonoBehaviour
 {
-    private Material _myTeamMaterial;
-    public Material TeamOneMaterial;
-    public Material TeamTwoMaterial;
+    [ColorUsage(true, true)]
+    public Color MyTeamColor;
 
+    [ColorUsage(true, true)]
+    public Color TeamOneColor;
+    [ColorUsage(true, true)]
+    public Color TeamTwoColor;
     private MeshRenderer _bodyRenderer;
     private MeshRenderer _armRenderer;
 
@@ -24,11 +27,11 @@ public class PlayerColour : MonoBehaviour
 
         if (_playerInputManager.playerCount % 2 == 0)
         {
-            _myTeamMaterial = TeamOneMaterial;
+            MyTeamColor = TeamOneColor;
         }
         else
         {
-            _myTeamMaterial = TeamTwoMaterial;
+            MyTeamColor = TeamTwoColor;
         }
 
         SetInstanceColorToTeamColor();
@@ -44,12 +47,18 @@ public class PlayerColour : MonoBehaviour
 
     private void SetInstanceColorToTeamColor()
     {
-        _bodyRenderer.material = _myTeamMaterial;
-        _armRenderer.material = _myTeamMaterial;
+        _bodyRenderer.material.color = MyTeamColor;
+        _bodyRenderer.material.SetColor("_EmissionColor", MyTeamColor);
+
+        _armRenderer.material.color = MyTeamColor;
+        _armRenderer.material.SetColor("_EmissionColor", MyTeamColor);
+
     }
 
     private void ChangeBallColorToTeamColor(GameObject ball)
     {
-        ball.GetComponent<BallColourChange>().SetDynamicMaterials(_myTeamMaterial);
+        ball.GetComponent<MeshRenderer>().sharedMaterial.color = MyTeamColor;
+        ball.GetComponent<MeshRenderer>().sharedMaterial.SetColor("_EmissionColor", MyTeamColor);
+
     }
 }

@@ -16,13 +16,8 @@ public class ScoreTracker : MonoBehaviour
     float _currentTickDuration = 0.0f;
     private PlayerInputManager _playerInputManager;
     bool _teamColoursSet = false;
-
-
-    //Color _teamOneColour;
-    //Color _teamTwoColour;
-
-    Material _teamOneMaterial;
-    Material _teamTwoMaterial;
+    Color _teamOneColour;
+    Color _teamTwoColour;
 
     // Start is called before the first frame update
     void Start()
@@ -38,19 +33,19 @@ public class ScoreTracker : MonoBehaviour
         {
             _teamColoursSet = true;
             var playercolour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerColour>();
-            _teamOneMaterial = playercolour.TeamOneMaterial;
-            _teamTwoMaterial = playercolour.TeamTwoMaterial;
+            _teamOneColour = playercolour.TeamOneColor;
+            _teamTwoColour = playercolour.TeamTwoColor;
         }
 
         bool isTheBallBeingHeld = false;
         bool doesTeamOneHoldTheBall = false;
 
-        if (_ballMeshRenderer.material == _teamOneMaterial)
+        if (_ballMeshRenderer.material.color == _teamOneColour)
         {
             isTheBallBeingHeld = true;
             doesTeamOneHoldTheBall = true;
         }
-        else if (_ballMeshRenderer.material == _teamTwoMaterial)
+        else if (_ballMeshRenderer.material.color == _teamTwoColour)
         {
             isTheBallBeingHeld = true;
         }
@@ -69,7 +64,7 @@ public class ScoreTracker : MonoBehaviour
                     _teamTwoScore += _scorePerTick;
                 }
                 _currentTickDuration = 0f;
-                //Debug.Log("Team 1 Score: " + _teamOneScore + " Team 2 Score: " + _teamTwoScore);
+                Debug.Log("Team 1 Score: " + _teamOneScore + " Team 2 Score: " + _teamTwoScore);
             }
         }
         else

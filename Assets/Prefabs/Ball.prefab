@@ -68,11 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-<<<<<<< Updated upstream
   - {fileID: 0}
-=======
-  - {fileID: 2100000, guid: 71e7b29f8a57e3d4c884381944e39dc4, type: 2}
->>>>>>> Stashed changes
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5097,7 +5093,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c987ece17252d441a5d70f616cd8e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NeutralMaterial: {fileID: 0}
+  NeutralColor: {r: 0, g: 0, b: 0, a: 0}
   NeutralCountdown: 5
 --- !u!114 &7869872183454074814
 MonoBehaviour:
