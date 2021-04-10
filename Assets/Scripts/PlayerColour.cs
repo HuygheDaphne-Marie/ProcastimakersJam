@@ -10,6 +10,10 @@ public class PlayerColour : MonoBehaviour
     public Material TeamOneMaterial;
     public Material TeamTwoMaterial;
 
+    private Color _myColor;
+    public Color TeamOneColor;
+    public Color TeamTwoColor;
+
     private Material[] _myTeamBodyMaterials;
     public Material[] TeamOneBodyMaterials;
     public Material[] TeamTwoBodyMaterials;
@@ -33,11 +37,13 @@ public class PlayerColour : MonoBehaviour
 
         if (_playerInputManager.playerCount % 2 == 0)
         {
+            _myColor = TeamOneColor;
             _myTeamMaterial = TeamOneMaterial;
             _myTeamBodyMaterials = TeamOneBodyMaterials;
         }
         else
         {
+            _myColor = TeamTwoColor;
             _myTeamMaterial = TeamTwoMaterial;
             _myTeamBodyMaterials = TeamTwoBodyMaterials;
         }
@@ -55,7 +61,7 @@ public class PlayerColour : MonoBehaviour
 
     private void SetInstanceColorToTeamColor()
     {
-        _timerImage.color = _myTeamMaterial.color;
+        _timerImage.color = _myColor;
         _trailRenderer.material = _myTeamMaterial;
         _baseRenderer.material = _myTeamBodyMaterials[_myTeamBodyMaterials.Length - 1];
 
