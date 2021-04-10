@@ -446,6 +446,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TeamOneMaterial: {fileID: 2100000, guid: 4cb06c2f28d561346bb5f6e82c50f32b, type: 2}
   TeamTwoMaterial: {fileID: 2100000, guid: ad969bcf561a1934fa98bcd079da00a7, type: 2}
+  TeamOneBodyMaterials:
+  - {fileID: 2100000, guid: 90ad52670dad90143a79a5d9e091853d, type: 2}
+  - {fileID: 2100000, guid: 7eccbec7d07210142a8253750688623d, type: 2}
+  - {fileID: 2100000, guid: f0888c796941fe74cb3d9100dc77f954, type: 2}
+  - {fileID: 2100000, guid: a5c579f82dd07c6459299431355b554e, type: 2}
+  TeamTwoBodyMaterials:
+  - {fileID: 2100000, guid: 1d131217603ef0845a3b5d63639e152b, type: 2}
+  - {fileID: 2100000, guid: 702c31b0483a9be4ea514f052d730370, type: 2}
+  - {fileID: 2100000, guid: c4142456b9ece2547a9206e3554ce193, type: 2}
+  - {fileID: 2100000, guid: 8c97bf8cf96bf5148a6a644a27303e6d, type: 2}
 --- !u!114 &4540600347541230763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,7 +488,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8905908227840704904, guid: 0cdbf8a6bc0bdb845951c9d544ee5a3d, type: 3}
+  - {fileID: 2100000, guid: 3d24bed1acc62b04fa80eb66075ab4da, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
