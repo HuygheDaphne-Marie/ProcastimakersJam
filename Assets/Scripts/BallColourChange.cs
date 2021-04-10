@@ -51,7 +51,7 @@ public class BallColourChange : MonoBehaviour
 
         foreach (GameObject wall in _dynamicWalls)
         {
-            wall.GetComponent<Renderer>().material = material;
+            wall.transform.GetChild(2).GetComponent<Renderer>().material = material;
         }
     }
 
@@ -63,7 +63,7 @@ public class BallColourChange : MonoBehaviour
 
         foreach (GameObject wall in _dynamicWalls)
         {
-            wall.GetComponent<Renderer>().material = NeutralMaterial;
+            wall.transform.GetChild(2).GetComponent<Renderer>().material = NeutralMaterial;
         }
 
         GameObject.Find("SoundManager").GetComponent<AudioSource>().pitch = 1;
