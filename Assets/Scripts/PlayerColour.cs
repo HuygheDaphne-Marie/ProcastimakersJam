@@ -10,7 +10,6 @@ public class PlayerColour : MonoBehaviour
     public Material TeamTwoMaterial;
 
     private MeshRenderer _bodyRenderer;
-    private MeshRenderer _armRenderer;
 
     private PlayerInputManager _playerInputManager;
 
@@ -20,7 +19,6 @@ public class PlayerColour : MonoBehaviour
         _playerInputManager = GameObject.Find("PlayerInputManager").GetComponent<PlayerInputManager>();
 
         _bodyRenderer = transform.GetChild(0).GetComponent<MeshRenderer>();
-        _armRenderer = _bodyRenderer.transform.GetChild(0).GetComponent<MeshRenderer>();
 
         if (_playerInputManager.playerCount % 2 == 0)
         {
@@ -45,7 +43,6 @@ public class PlayerColour : MonoBehaviour
     private void SetInstanceColorToTeamColor()
     {
         _bodyRenderer.material = _myTeamMaterial;
-        _armRenderer.material = _myTeamMaterial;
 
     }
 

@@ -16,6 +16,8 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField]
     Image _dashTimerImage;
 
+    [SerializeField]
+    Transform _wheelTransform;
 
 
     Vector2 _inputMovement;
@@ -96,6 +98,14 @@ public class CharacterMovement : MonoBehaviour
         {
             _rigidBody.angularVelocity = Vector3.zero;
         }
+
+        if (_inputMovement != Vector2.zero)
+        {
+            Quaternion newRotation = Quaternion.LookRotation(new Vector3(_inputMovement.x, 0f, _inputMovement.y), Vector3.up);
+
+            _wheelTransform.rotation = Quaternion.Lerp(_rigidBody.rotation, newRotation, _rotationSpeed);
+        }
+
     }
 
     private void HandleDash()
