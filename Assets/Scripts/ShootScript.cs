@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 public class ShootScript : MonoBehaviour
 {
     [SerializeField]
@@ -10,6 +11,8 @@ public class ShootScript : MonoBehaviour
     float _shootForce = 100;
     [SerializeField]
     float _maxTimeBallCanBeHeld = 5f;
+    [SerializeField]
+    Image _timerImage;
 
     bool _isHolding;
     float _holdCooldown = 0.5f;
@@ -29,17 +32,16 @@ public class ShootScript : MonoBehaviour
         if (_isHolding)
         {
             _ball.transform.position = HoldPosition.position;
-            _timeBallHeld += Time.deltaTime;
+            _timeBallHeld -= Time.deltaTime;
+            _timerImage.fillAmount = _timeBallHeld / _maxTimeBallCanBeHeld;
         }
-        if(_timeBallHeld >= _maxTimeBallCanBeHeld)
+        if(_timeBallHeld <= 0)
         {
-            _timeBallHeld = 0f;
             Shoot();
         }
         if (!_canHold)
         {
             _holdCooldown -= Time.deltaTime;
-            _timeBallHeld = 0f;
             if (_holdCooldown <= 0)
             {
                 _canHold = true;
@@ -53,6 +55,7 @@ public class ShootScript : MonoBehaviour
         if (other.gameObject.tag == "Ball" && _canHold)
         {
             _isHolding = true;
+            _timeBallHeld = _maxTimeBallCanBeHeld;
             _ball.GetComponent<Collider>().enabled = false;
         }
     }
@@ -62,6 +65,7 @@ public class ShootScript : MonoBehaviour
         if (_isHolding)
         {
             _isHolding = false;
+            _timerImage.fillAmount = 0;
             _ball.GetComponent<Collider>().enabled = true;
             _ball.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
             _ball.GetComponent<Rigidbody>().AddForce((this.gameObject.transform.forward * _shootForce), ForceMode.Impulse);
