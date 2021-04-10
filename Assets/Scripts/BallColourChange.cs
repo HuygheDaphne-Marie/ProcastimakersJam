@@ -41,7 +41,7 @@ public class BallColourChange : MonoBehaviour
         return GetComponent<MeshRenderer>().sharedMaterial.color == NeutralColor;
     }
 
-    void SetColourToNeutral()
+    public void SetColourToNeutral()
     {
         GetComponent<MeshRenderer>().sharedMaterial.color = NeutralColor;
         GetComponent<MeshRenderer>().sharedMaterial.SetColor("_EmissionColor", NeutralColor);

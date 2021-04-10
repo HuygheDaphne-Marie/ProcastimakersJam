@@ -39,7 +39,7 @@ public class PlayerColour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Ball")
+        if (other.gameObject.tag == "Ball")
         {
             ChangeBallColorToTeamColor(other.gameObject);
         }
