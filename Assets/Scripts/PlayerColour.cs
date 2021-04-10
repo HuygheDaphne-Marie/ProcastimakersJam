@@ -37,11 +37,6 @@ public class PlayerColour : MonoBehaviour
         SetInstanceColorToTeamColor();
     }
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //}
-
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Ball")

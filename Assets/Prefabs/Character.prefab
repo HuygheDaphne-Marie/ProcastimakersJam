@@ -297,6 +297,7 @@ GameObject:
   - component: {fileID: 3511749136817627499}
   - component: {fileID: 5210546335216040014}
   - component: {fileID: 8419308297648257736}
+  - component: {fileID: 4540600347541230763}
   m_Layer: 8
   m_Name: Character
   m_TagString: Player
@@ -444,6 +445,18 @@ MonoBehaviour:
   MyTeamColor: {r: 0, g: 0, b: 0, a: 0}
   TeamOneColor: {r: 0, g: 1, b: 0.88235295, a: 1}
   TeamTwoColor: {r: 0.9254902, g: 0.011764706, b: 0.011764706, a: 0}
+--- !u!114 &4540600347541230763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8980066425418392554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 305e205e5c1410a49a63494ebbe5f8b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8980066425633302576
 GameObject:
   m_ObjectHideFlags: 0
