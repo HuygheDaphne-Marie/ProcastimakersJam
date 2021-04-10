@@ -35,10 +35,10 @@ public class ScoreTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_startGame)
+        if (_startGame)
             _gameTime -= Time.deltaTime;
-       
-        if(!_teamColoursSet && _playerInputManager.playerCount > 0)
+
+        if (!_teamColoursSet && _playerInputManager.playerCount > 0)
         {
             _startGame = true;
             _teamColoursSet = true;
@@ -47,22 +47,25 @@ public class ScoreTracker : MonoBehaviour
             _teamTwoMaterial = playercolour.TeamTwoMaterial;
         }
 
-        bool isTheBallBeingHeld = false;
+        bool isNotNeutral = false;
         bool doesTeamOneHoldTheBall = false;
 
-        if (_ballMeshRenderer.material == _teamOneMaterial)
+        if (!PlayerColour.IsBallNeutral)
         {
-            isTheBallBeingHeld = true;
-            doesTeamOneHoldTheBall = true;
+            isNotNeutral = true;
+            if (PlayerColour.DoesTeamOneHoldBall)
+            {
+                doesTeamOneHoldTheBall = true;
+            }
         }
-        else if (_ballMeshRenderer.material == _teamTwoMaterial)
-        {
-            isTheBallBeingHeld = true;
-        }
-        
-        Debug.Log("Team 1 Score: " + _teamOneScore + " Team 2 Score: " + _teamTwoScore);
+        //else if (_ballMeshRenderer.material == _teamTwoMaterial)
+        //{
+        //    isNotNeutral = true;
+        //}
 
-        if (isTheBallBeingHeld)
+        //Debug.Log("Team 1 Score: " + _teamOneScore + " Team 2 Score: " + _teamTwoScore);
+
+        if (isNotNeutral)
         {
             _currentTickDuration += Time.deltaTime;
             if (_currentTickDuration >= _tickDuration)

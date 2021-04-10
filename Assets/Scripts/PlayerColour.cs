@@ -25,6 +25,9 @@ public class PlayerColour : MonoBehaviour
 
     private PlayerInputManager _playerInputManager;
 
+    static public bool IsBallNeutral = true;
+    static public bool DoesTeamOneHoldBall = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,5 +75,16 @@ public class PlayerColour : MonoBehaviour
     private void ChangeBallColorToTeamColor(GameObject ball)
     {
         ball.GetComponent<BallColourChange>().SetDynamicMaterials(_myTeamMaterial);
+        if(_myTeamMaterial == TeamOneMaterial)
+        {
+            DoesTeamOneHoldBall = true;
+            Debug.Log("Team One!");
+        }
+        else
+        {
+            DoesTeamOneHoldBall = false;
+            Debug.Log("Team Two!");
+        }
+        IsBallNeutral = false;
     }
 }

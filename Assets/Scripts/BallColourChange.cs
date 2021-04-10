@@ -69,6 +69,8 @@ public class BallColourChange : MonoBehaviour
         GameObject.Find("SoundManager").GetComponent<AudioSource>().pitch = 1;
         GameObject.Find("SoundManager").GetComponent<SoundManagerScript>().PlayNeutral();
         _isShot = false;
+
+        PlayerColour.IsBallNeutral = true;
     }
 
     public void OnShoot()
