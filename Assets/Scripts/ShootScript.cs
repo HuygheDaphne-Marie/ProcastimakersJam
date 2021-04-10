@@ -16,6 +16,8 @@ public class ShootScript : MonoBehaviour
 
     bool _isHolding;
     float _holdCooldown = 0.5f;
+    [SerializeField]
+    float _maxHoldCooldown = 1.0f;
     bool _canHold = true;
     GameObject _ball;
     float _timeBallHeld = 0f;
@@ -45,7 +47,7 @@ public class ShootScript : MonoBehaviour
             if (_holdCooldown <= 0)
             {
                 _canHold = true;
-                _holdCooldown = 0.5f;
+                _holdCooldown = _maxHoldCooldown;
             }
         }
     }
