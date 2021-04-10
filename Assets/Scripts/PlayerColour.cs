@@ -35,7 +35,7 @@ public class PlayerColour : MonoBehaviour
         _trailRenderer = GetComponent<TrailRenderer>();
         _timerImage = transform.GetChild(0).GetChild(1).GetChild(0).GetComponent<Image>(); // dot hell
 
-        if (_playerInputManager.playerCount % 2 == 0)
+        if (_playerInputManager.playerCount % 2 != 0)
         {
             _myColor = TeamOneColor;
             _myTeamMaterial = TeamOneMaterial;
