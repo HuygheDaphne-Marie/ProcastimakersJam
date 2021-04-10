@@ -352,7 +352,7 @@ MonoBehaviour:
   _speed: 10
   _rotationSpeed: 15
   _dashSpeedIncrease: 4
-  _dashTimerImage: {fileID: 0}
+  _dashTimerImage: {fileID: 8690875751946394420}
 --- !u!136 &8980066425418392550
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -412,7 +412,7 @@ MonoBehaviour:
   HoldPosition: {fileID: 7449075760427274318}
   _shootForce: 14
   _maxTimeBallCanBeHeld: 3
-  _timerImage: {fileID: 0}
+  _timerImage: {fileID: 7724046502195063861}
 --- !u!135 &5210546335216040014
 SphereCollider:
   m_ObjectHideFlags: 0

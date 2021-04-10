@@ -39,6 +39,8 @@ public class CharacterMovement : MonoBehaviour
         if (_hasDashed)
         {
             _dashCooldownTimer -= Time.deltaTime;
+            _dashTimerImage.fillAmount = _dashCooldownTimer / maxDashCooldownTimer;
+
             if (_dashCooldownTimer <= 0f)
             {
                 _hasDashed = false;
@@ -46,7 +48,7 @@ public class CharacterMovement : MonoBehaviour
             }
 
             _inputCooldownTimer -= Time.deltaTime;
-            if(_inputCooldownTimer <= 0f)
+            if (_inputCooldownTimer <= 0f)
             {
                 _allowInput = true;
                 _inputCooldownTimer = maxInputCooldownTimer;
@@ -92,6 +94,10 @@ public class CharacterMovement : MonoBehaviour
     private void HandleDash()
     {
         _rigidBody.velocity = new Vector3(_rigidBody.velocity.x * _dashSpeedIncrease, 0f, _rigidBody.velocity.z * _dashSpeedIncrease);
+        //Vector3 currentVelocity = _rigidBody.velocity;
+        //currentVelocity.Normalize();
+        //_rigidBody.velocity = Vector3.zero;
+        //_rigidBody.AddForce(new Vector3(currentVelocity.x * _dashSpeedIncrease, currentVelocity.y, currentVelocity.z * _dashSpeedIncrease), ForceMode.Impulse);
     }
 
     private void OnMove(InputValue inputValue)
@@ -104,9 +110,11 @@ public class CharacterMovement : MonoBehaviour
     }
     private void OnDash(InputValue inputValue)
     {
-        _hasDashed = true;
-        _dashTimerImage.fillAmount = _dashCooldownTimer / maxDashCooldownTimer;
-        _allowInput = false;
-        HandleDash();
+        if (!_hasDashed)
+        {
+            _hasDashed = true;
+            _allowInput = false;
+            HandleDash();
+        }
     }
 }
