@@ -414,6 +414,7 @@ MonoBehaviour:
   _shootForce: 25
   _maxTimeBallCanBeHeld: 1
   _timerImage: {fileID: 7724046502195063861}
+  _isHolding: 0
   _maxHoldCooldown: 1
 --- !u!135 &5210546335216040014
 SphereCollider:

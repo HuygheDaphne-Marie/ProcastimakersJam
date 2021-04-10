@@ -17,6 +17,7 @@ public class CharacterMovement : MonoBehaviour
     Image _dashTimerImage;
 
 
+
     Vector2 _inputMovement;
     Vector2 _inputRotation;
     Rigidbody _rigidBody;

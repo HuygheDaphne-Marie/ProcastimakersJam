@@ -12,7 +12,6 @@ public class PlayerColour : MonoBehaviour
     public Color TeamOneColor;
     [ColorUsage(true, true)]
     public Color TeamTwoColor;
-
     private MeshRenderer _bodyRenderer;
     private MeshRenderer _armRenderer;
 
@@ -58,11 +57,13 @@ public class PlayerColour : MonoBehaviour
 
         _armRenderer.material.color = MyTeamColor;
         _armRenderer.material.SetColor("_EmissionColor", MyTeamColor);
+
     }
 
     private void ChangeBallColorToTeamColor(GameObject ball)
     {
         ball.GetComponent<MeshRenderer>().sharedMaterial.color = MyTeamColor;
         ball.GetComponent<MeshRenderer>().sharedMaterial.SetColor("_EmissionColor", MyTeamColor);
+
     }
 }
