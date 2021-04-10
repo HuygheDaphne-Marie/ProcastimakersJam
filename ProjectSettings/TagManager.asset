@@ -10,6 +10,7 @@ TagManager:
   - BallSpawn
   - PickupSpawn
   - Pickup
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Level
   - Player
   - Ball
-  - 
+  - Pickup
   - 
   - 
   - 
