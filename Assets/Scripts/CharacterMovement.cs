@@ -17,13 +17,14 @@ public class CharacterMovement : MonoBehaviour
     Image _dashTimerImage;
 
 
-    Vector2 _velocity;
-    Vector2 _rotation;
+    Vector2 _inputMovement;
+    Vector2 _inputRotation;
     Rigidbody _rigidBody;
     bool _hasDashed = false;
     float _inputCooldownTimer = 0f;
     float _dashCooldownTimer = 0f;
     bool _allowInput = true;
+    bool _MustDash = false;
 
     // Start is called before the first frame update
     void Start()
@@ -60,15 +61,16 @@ public class CharacterMovement : MonoBehaviour
     {
         HandleMovement();
         HandleRotation();
+        HandleDash();
     }
 
     private void HandleMovement()
     {
         if (_allowInput)
         {
-            if (_velocity != Vector2.zero)
+            if (_inputMovement != Vector2.zero)
             {
-                _rigidBody.velocity = new Vector3(_velocity.x * _speed, 0f, _velocity.y * _speed);
+                _rigidBody.velocity = new Vector3((_inputMovement.x * _speed) + _rigidBody.velocity.x, 0f, (_inputMovement.y * _speed) + _rigidBody.velocity.z);
             }
             else
             {
@@ -79,9 +81,9 @@ public class CharacterMovement : MonoBehaviour
 
     private void HandleRotation()
     {
-        if (_rotation != Vector2.zero)
+        if (_inputRotation != Vector2.zero)
         {
-            Quaternion newRotation = Quaternion.LookRotation(new Vector3(_rotation.x, 0f, _rotation.y), Vector3.up);
+            Quaternion newRotation = Quaternion.LookRotation(new Vector3(_inputRotation.x, 0f, _inputRotation.y), Vector3.up);
 
             _rigidBody.rotation = Quaternion.Lerp(_rigidBody.rotation, newRotation, _rotationSpeed);
         }
@@ -93,28 +95,40 @@ public class CharacterMovement : MonoBehaviour
 
     private void HandleDash()
     {
-        _rigidBody.velocity = new Vector3(_rigidBody.velocity.x * _dashSpeedIncrease, 0f, _rigidBody.velocity.z * _dashSpeedIncrease);
-        //Vector3 currentVelocity = _rigidBody.velocity;
-        //currentVelocity.Normalize();
-        //_rigidBody.velocity = Vector3.zero;
-        //_rigidBody.AddForce(new Vector3(currentVelocity.x * _dashSpeedIncrease, currentVelocity.y, currentVelocity.z * _dashSpeedIncrease), ForceMode.Impulse);
+        if (_MustDash && !_hasDashed)
+        {
+            // _rigidBody.velocity.Normalize();
+            // _rigidBody.velocity = new Vector3(_rigidBody.velocity.x * _dashSpeedIncrease, 0f, _rigidBody.velocity.z * _dashSpeedIncrease);
+            // Debug.Log(_rigidBody.velocity);
+
+            _hasDashed = true;
+            _MustDash = false;
+
+            Vector3 currentVelocity = _rigidBody.velocity;
+            currentVelocity.Normalize();
+            _rigidBody.velocity = Vector3.zero;
+            _rigidBody.AddForce(new Vector3(currentVelocity.x * _dashSpeedIncrease, currentVelocity.y, currentVelocity.z * _dashSpeedIncrease), ForceMode.Impulse);
+        }
     }
 
     private void OnMove(InputValue inputValue)
     {
-        _velocity = inputValue.Get<Vector2>();
+        if (_allowInput)
+        {
+            _inputMovement = inputValue.Get<Vector2>();
+        }
     }
     private void OnTurn(InputValue inputValue)
     {
-        _rotation = inputValue.Get<Vector2>();
+        _inputRotation = inputValue.Get<Vector2>();
     }
     private void OnDash(InputValue inputValue)
     {
         if (!_hasDashed)
         {
-            _hasDashed = true;
+            //_hasDashed = true;
             _allowInput = false;
-            HandleDash();
+            _MustDash = true;
         }
     }
 }
