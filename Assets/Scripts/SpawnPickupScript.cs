@@ -42,7 +42,7 @@ public class SpawnPickupScript : MonoBehaviour
             {
                 _currentTime = 0f;
 
-                GameObject speed = GameObject.Instantiate(_prefabs[Random.Range(0, _prefabs.Count)]);
+                GameObject speed = GameObject.Instantiate(_prefabs[Random.Range(0, _prefabs.Count)]); // start at 1 so it doesnt take the parent object
                 speed.transform.position = _pickupSpawns[Random.Range(0, _pickupSpawns.Length)].transform.position;
             }
         }

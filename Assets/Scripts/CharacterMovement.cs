@@ -27,6 +27,7 @@ public class CharacterMovement : MonoBehaviour
     bool _allowInput = true;
     bool _MustDash = false;
     ShootScript _shootScript;
+    TrailRenderer _trailRenderer;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +36,7 @@ public class CharacterMovement : MonoBehaviour
         _shootScript = this.transform.GetComponent<ShootScript>();
         _dashCooldownTimer = maxDashCooldownTimer;
         _inputCooldownTimer = maxInputCooldownTimer;
+        _trailRenderer = this.GetComponent<TrailRenderer>();
     }
 
     // Update is called once per frame
@@ -117,10 +119,12 @@ public class CharacterMovement : MonoBehaviour
     public void AddSpeedBoost(float multiplier)
     {
         _speed *= multiplier;
+        _trailRenderer.enabled = true;
     }
     public void RemoveSpeedBoost(float multiplier)
     {
         _speed /= multiplier;
+        _trailRenderer.enabled = false;
     }
 
     private void OnMove(InputValue inputValue)

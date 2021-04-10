@@ -28,7 +28,7 @@ public class SpeedPickup : MonoBehaviour
             if(_currentTime >= _speedBoostDuration)
             {
                 _playerMovement.RemoveSpeedBoost(_speedMultiplier);
-                Destroy(this);
+                Destroy(this.gameObject);
             }
         }
     }
