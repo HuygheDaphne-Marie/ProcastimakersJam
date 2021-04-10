@@ -84,33 +84,6 @@
                     "isPartOfComposite": false
                 }
             ]
-        },
-        {
-            "name": "Keyboard",
-            "id": "381dddbf-7a1a-4b37-b335-fd173907610c",
-            "actions": [
-                {
-                    "name": "Move",
-                    "type": "Value",
-                    "id": "e6b48782-683a-4958-9848-e0998f9c7d5d",
-                    "expectedControlType": "Analog",
-                    "processors": "",
-                    "interactions": ""
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "568affbc-ef1d-4e32-846d-938f01c52cdb",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
         }
     ],
     "controlSchemes": [

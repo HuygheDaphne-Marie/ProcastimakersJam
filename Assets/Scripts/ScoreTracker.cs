@@ -12,7 +12,7 @@ public class ScoreTracker : MonoBehaviour
     float _tickDuration = 0.5f;
 
     [SerializeField]
-    public static float GameTime = 20;
+    public static float GameTime = 120;
 
 
 

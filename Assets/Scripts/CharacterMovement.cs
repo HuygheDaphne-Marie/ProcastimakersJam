@@ -75,6 +75,7 @@ public class CharacterMovement : MonoBehaviour
     {
         if (_allowInput)
         {
+            Debug.Log(_inputMovement);
             if (_inputMovement != Vector2.zero)
             {
                 _rigidBody.velocity = new Vector3((_inputMovement.x * _speed) + _rigidBody.velocity.x, 0f, (_inputMovement.y * _speed) + _rigidBody.velocity.z);
