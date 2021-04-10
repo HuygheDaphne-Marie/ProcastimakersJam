@@ -95,8 +95,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea406b67e115ca4f88d74500009683e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxDashCooldownTimer: 2
+  maxInputCooldownTimer: 0.5
   _speed: 10
   _rotationSpeed: 15
+  _dashSpeedIncrease: 4
 --- !u!136 &8980066425418392550
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -155,6 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoldPosition: {fileID: 7449075760427274318}
   _shootForce: 14
+  _maxTimeBallCanBeHeld: 5
 --- !u!135 &5210546335216040014
 SphereCollider:
   m_ObjectHideFlags: 0

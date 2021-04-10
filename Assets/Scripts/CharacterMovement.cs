@@ -5,25 +5,29 @@ using UnityEngine.InputSystem;
 
 public class CharacterMovement : MonoBehaviour
 {
-    public float _dashCooldownTimer = 0f;
+    public float maxDashCooldownTimer = 2f;
+    public float maxInputCooldownTimer = 0.5f;
     [SerializeField]
     float _speed = 5f;
     [SerializeField]
     float _rotationSpeed = 15f;
     [SerializeField]
-    float _dashSpeedIncrease = 10f;
+    float _dashSpeedIncrease = 4f;
 
     Vector2 _velocity;
     Vector2 _rotation;
     Rigidbody _rigidBody;
-    float _maxDashCooldownTimer = 2f;
     bool _hasDashed = false;
+    float _inputCooldownTimer = 0f;
+    float _dashCooldownTimer = 0f;
+    bool _allowInput = true;
 
     // Start is called before the first frame update
     void Start()
     {
         _rigidBody = this.GetComponent<Rigidbody>();
-        _dashCooldownTimer = _maxDashCooldownTimer;
+        _dashCooldownTimer = maxDashCooldownTimer;
+        _inputCooldownTimer = maxInputCooldownTimer;
     }
 
     // Update is called once per frame
@@ -35,7 +39,14 @@ public class CharacterMovement : MonoBehaviour
             if (_dashCooldownTimer <= 0f)
             {
                 _hasDashed = false;
-                _dashCooldownTimer = _maxDashCooldownTimer;
+                _dashCooldownTimer = maxDashCooldownTimer;
+            }
+
+            _inputCooldownTimer -= Time.deltaTime;
+            if(_inputCooldownTimer <= 0f)
+            {
+                _allowInput = true;
+                _inputCooldownTimer = maxInputCooldownTimer;
             }
         }
     }
@@ -48,7 +59,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void HandleMovement()
     {
-        if (!_hasDashed)
+        if (_allowInput)
         {
             if (_velocity != Vector2.zero)
             {
@@ -91,6 +102,7 @@ public class CharacterMovement : MonoBehaviour
     private void OnDash(InputValue inputValue)
     {
         _hasDashed = true;
+        _allowInput = false;
         HandleDash();
     }
 }
