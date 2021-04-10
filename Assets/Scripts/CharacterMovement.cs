@@ -51,7 +51,7 @@ public class CharacterMovement : MonoBehaviour
         {
             Quaternion newRotation = Quaternion.LookRotation(new Vector3(_rotation.x, 0f, _rotation.y), Vector3.up);
 
-            _rigidBody.rotation = Quaternion.Lerp(_rigidBody.rotation, newRotation, 1f);
+            _rigidBody.rotation = Quaternion.Lerp(_rigidBody.rotation, newRotation, _rotationSpeed);
         }
         else
         {

@@ -47,7 +47,7 @@
                     "id": "ce54e578-8f58-4b3c-9265-a1c7832bc0fe",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "StickDeadzone",
                     "groups": "PlayerControl",
                     "action": "Turn",
                     "isComposite": false,
