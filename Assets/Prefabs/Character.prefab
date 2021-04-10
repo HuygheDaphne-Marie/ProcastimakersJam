@@ -380,7 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: 0}
+  m_Actions: {fileID: -944628639613478452, guid: 63aabff3f52b1fe458c855ed70008615, type: 3}
   m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -440,7 +440,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ead32455e78edb43883c0c0a64d02e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TeamColour: {r: 0, g: 0, b: 0, a: 0}
+  MyTeamColor: {r: 0, g: 0, b: 0, a: 0}
+  TeamOneColor: {r: 0, g: 1, b: 0.88235295, a: 1}
+  TeamTwoColor: {r: 0.9254902, g: 0.011764706, b: 0.011764706, a: 0}
 --- !u!1 &8980066425633302576
 GameObject:
   m_ObjectHideFlags: 0
