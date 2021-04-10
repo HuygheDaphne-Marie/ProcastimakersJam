@@ -23,5 +23,8 @@ public class BallScript : MonoBehaviour
     {
         _particles.Play();
         _shakeScript.Shake(0.2f);
+        SoundManagerScript script = GameObject.Find("SoundManager").GetComponent<SoundManagerScript>();
+        script.PlayBounce();
+        GameObject.Find("SoundManager").GetComponent<AudioSource>().pitch = Random.Range(0.5f, 2.0f);
     }
 }

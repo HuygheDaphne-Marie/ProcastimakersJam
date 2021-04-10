@@ -65,6 +65,9 @@ public class BallColourChange : MonoBehaviour
         {
             wall.GetComponent<Renderer>().material = NeutralMaterial;
         }
+
+        GameObject.Find("SoundManager").GetComponent<AudioSource>().pitch = 1;
+        GameObject.Find("SoundManager").GetComponent<SoundManagerScript>().PlayNeutral();
         _isShot = false;
     }
 

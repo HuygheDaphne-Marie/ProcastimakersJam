@@ -142,6 +142,8 @@ public class CharacterMovement : MonoBehaviour
     {
         if (!_hasDashed && !_shootScript._isHolding)
         {
+            GameObject.Find("SoundManager").GetComponent<AudioSource>().pitch = 1;
+            GameObject.Find("SoundManager").GetComponent<SoundManagerScript>().PlayDash();
             //_hasDashed = true;
             _allowInput = false;
             _MustDash = true;
