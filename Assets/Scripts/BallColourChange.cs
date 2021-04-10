@@ -53,4 +53,10 @@ public class BallColourChange : MonoBehaviour
         //Debug.Log("Is Shot!");
         _isShot = true;
     }
+
+    public void OnCatch()
+    {
+        _neutralTimer = 0.0f;
+        _isShot = false;
+    }
 }

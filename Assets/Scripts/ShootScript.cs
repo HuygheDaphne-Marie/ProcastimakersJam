@@ -59,6 +59,7 @@ public class ShootScript : MonoBehaviour
             _isHolding = true;
             _timeBallHeld = _maxTimeBallCanBeHeld;
             _ball.GetComponent<Collider>().enabled = false;
+            _ball.GetComponent<BallColourChange>().OnCatch();
         }
     }
 
