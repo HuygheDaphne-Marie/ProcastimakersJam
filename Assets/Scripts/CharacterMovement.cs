@@ -49,9 +49,13 @@ public class CharacterMovement : MonoBehaviour
     {
         if (_rotation != Vector2.zero)
         {
-            Quaternion test = Quaternion.LookRotation(new Vector3(_rotation.x, 0f, _rotation.y), Vector3.up);
+            Quaternion newRotation = Quaternion.LookRotation(new Vector3(_rotation.x, 0f, _rotation.y), Vector3.up);
 
-            _rigidBody.rotation = test;
+            _rigidBody.rotation = Quaternion.Lerp(_rigidBody.rotation, newRotation, 1f);
+        }
+        else
+        {
+            _rigidBody.angularVelocity = Vector3.zero;
         }
     }
 

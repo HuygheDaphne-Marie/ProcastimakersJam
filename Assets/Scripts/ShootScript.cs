@@ -6,12 +6,16 @@ public class ShootScript : MonoBehaviour
 {
     [SerializeField]
     Transform HoldPosition;
+    [SerializeField]
+    float _shootForce = 100;
+    [SerializeField]
+    float _maxTimeBallCanBeHeld = 5f;
+
     bool _isHolding;
     float _holdCooldown = 0.5f;
     bool _canHold = true;
     GameObject _ball;
-    [SerializeField]
-    float _shootForce = 100;
+    float _timeBallHeld = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -22,14 +26,20 @@ public class ShootScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_isHolding)
+        if (_isHolding)
         {
             _ball.transform.position = HoldPosition.position;
+            _timeBallHeld += Time.deltaTime;
         }
-        if(!_canHold)
+        if(_timeBallHeld >= _maxTimeBallCanBeHeld)
+        {
+            _timeBallHeld = 0f;
+            Shoot();
+        }
+        if (!_canHold)
         {
             _holdCooldown -= Time.deltaTime;
-            if(_holdCooldown <= 0)
+            if (_holdCooldown <= 0)
             {
                 _canHold = true;
                 _holdCooldown = 0.5f;
@@ -39,7 +49,7 @@ public class ShootScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Ball" && _canHold)
+        if (other.gameObject.tag == "Ball" && _canHold)
         {
             _isHolding = true;
             _ball.GetComponent<Collider>().enabled = false;
@@ -48,12 +58,12 @@ public class ShootScript : MonoBehaviour
 
     private void Shoot()
     {
-        if(_isHolding)
+        if (_isHolding)
         {
-        _isHolding = false;
-        _ball.GetComponent<Collider>().enabled = true;
-        _ball.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-        _ball.GetComponent<Rigidbody>().AddForce((this.gameObject.transform.forward * _shootForce), ForceMode.Impulse);
+            _isHolding = false;
+            _ball.GetComponent<Collider>().enabled = true;
+            _ball.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+            _ball.GetComponent<Rigidbody>().AddForce((this.gameObject.transform.forward * _shootForce), ForceMode.Impulse);
             _canHold = false;
         }
     }
