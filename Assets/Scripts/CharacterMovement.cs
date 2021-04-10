@@ -112,10 +112,6 @@ public class CharacterMovement : MonoBehaviour
     {
         if (_MustDash && !_hasDashed)
         {
-            // _rigidBody.velocity.Normalize();
-            // _rigidBody.velocity = new Vector3(_rigidBody.velocity.x * _dashSpeedIncrease, 0f, _rigidBody.velocity.z * _dashSpeedIncrease);
-            // Debug.Log(_rigidBody.velocity);
-
             _hasDashed = true;
             _MustDash = false;
 
