@@ -25,11 +25,13 @@ public class CharacterMovement : MonoBehaviour
     float _dashCooldownTimer = 0f;
     bool _allowInput = true;
     bool _MustDash = false;
+    ShootScript _shootScript;
 
     // Start is called before the first frame update
     void Start()
     {
         _rigidBody = this.GetComponent<Rigidbody>();
+        _shootScript = this.transform.GetComponent<ShootScript>();
         _dashCooldownTimer = maxDashCooldownTimer;
         _inputCooldownTimer = maxInputCooldownTimer;
     }
@@ -124,7 +126,7 @@ public class CharacterMovement : MonoBehaviour
     }
     private void OnDash(InputValue inputValue)
     {
-        if (!_hasDashed)
+        if (!_hasDashed && !_shootScript._isHolding)
         {
             //_hasDashed = true;
             _allowInput = false;

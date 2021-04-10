@@ -14,7 +14,7 @@ public class ShootScript : MonoBehaviour
     [SerializeField]
     Image _timerImage;
 
-    bool _isHolding;
+    public bool _isHolding;
     float _holdCooldown = 0.5f;
     [SerializeField]
     float _maxHoldCooldown = 1.0f;
