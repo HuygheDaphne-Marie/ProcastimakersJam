@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.UI;
 public class CharacterMovement : MonoBehaviour
 {
     public float maxDashCooldownTimer = 2f;
@@ -13,6 +13,9 @@ public class CharacterMovement : MonoBehaviour
     float _rotationSpeed = 15f;
     [SerializeField]
     float _dashSpeedIncrease = 4f;
+    [SerializeField]
+    Image _dashTimerImage;
+
 
     Vector2 _velocity;
     Vector2 _rotation;
@@ -102,6 +105,7 @@ public class CharacterMovement : MonoBehaviour
     private void OnDash(InputValue inputValue)
     {
         _hasDashed = true;
+        _dashTimerImage.fillAmount = _dashCooldownTimer / maxDashCooldownTimer;
         _allowInput = false;
         HandleDash();
     }
