@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerColour : MonoBehaviour
 {
@@ -9,13 +10,15 @@ public class PlayerColour : MonoBehaviour
     public Material TeamOneMaterial;
     public Material TeamTwoMaterial;
 
-    public Material[] _myTeamBodyMaterials;
+    private Material[] _myTeamBodyMaterials;
     public Material[] TeamOneBodyMaterials;
     public Material[] TeamTwoBodyMaterials;
 
     private MeshRenderer _bodyRenderer;
     private MeshRenderer _baseRenderer;
     private TrailRenderer _trailRenderer;
+    private Image _timerImage;
+
     private PlayerInputManager _playerInputManager;
 
     // Start is called before the first frame update
@@ -26,6 +29,7 @@ public class PlayerColour : MonoBehaviour
         _bodyRenderer = transform.GetChild(0).GetComponent<MeshRenderer>();
         _baseRenderer = transform.GetChild(1).GetComponent<MeshRenderer>();
         _trailRenderer = GetComponent<TrailRenderer>();
+        _timerImage = transform.GetChild(0).GetChild(1).GetChild(0).GetComponent<Image>(); // dot hell
 
         if (_playerInputManager.playerCount % 2 == 0)
         {
@@ -51,15 +55,12 @@ public class PlayerColour : MonoBehaviour
 
     private void SetInstanceColorToTeamColor()
     {
+        _timerImage.color = _myTeamMaterial.color;
         _trailRenderer.material = _myTeamMaterial;
         _baseRenderer.material = _myTeamBodyMaterials[_myTeamBodyMaterials.Length - 1];
 
         Material[] uppMaterials = { _myTeamBodyMaterials[0], _myTeamBodyMaterials[1], _myTeamBodyMaterials[2]};
         _bodyRenderer.materials = uppMaterials;
-        //for (int i = 0; i < _myTeamBodyMaterials.Length - 1; i++)
-        //{
-        //    _bodyRenderer.materials[i] = _myTeamBodyMaterials[i];
-        //}
     }
 
     private void ChangeBallColorToTeamColor(GameObject ball)

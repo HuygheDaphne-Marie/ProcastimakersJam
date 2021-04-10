@@ -446,7 +446,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TeamOneMaterial: {fileID: 2100000, guid: 4cb06c2f28d561346bb5f6e82c50f32b, type: 2}
   TeamTwoMaterial: {fileID: 2100000, guid: ad969bcf561a1934fa98bcd079da00a7, type: 2}
-  _myTeamBodyMaterials: []
   TeamOneBodyMaterials:
   - {fileID: 2100000, guid: 90ad52670dad90143a79a5d9e091853d, type: 2}
   - {fileID: 2100000, guid: 7eccbec7d07210142a8253750688623d, type: 2}
