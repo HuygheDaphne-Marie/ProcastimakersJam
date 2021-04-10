@@ -592,3 +592,4 @@ InitTestScene*.unity
 
 # End of https://www.toptal.com/developers/gitignore/api/unity,visualstudio,csharp
 #*.meta
+Assets/Models/Level.fbx.meta
