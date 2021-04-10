@@ -16,8 +16,8 @@ public class ScoreTracker : MonoBehaviour
     float _currentTickDuration = 0.0f;
     private PlayerInputManager _playerInputManager;
     bool _teamColoursSet = false;
-    Color _teamOneColour;
-    Color _teamTwoColour;
+    Material _teamOneMaterial;
+    Material _teamTwoMaterial;
 
     // Start is called before the first frame update
     void Start()
@@ -33,19 +33,19 @@ public class ScoreTracker : MonoBehaviour
         {
             _teamColoursSet = true;
             var playercolour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerColour>();
-            _teamOneColour = playercolour.TeamOneColor;
-            _teamTwoColour = playercolour.TeamTwoColor;
+            _teamOneMaterial = playercolour.TeamOneMaterial;
+            _teamTwoMaterial = playercolour.TeamTwoMaterial;
         }
 
         bool isTheBallBeingHeld = false;
         bool doesTeamOneHoldTheBall = false;
 
-        if (_ballMeshRenderer.material.color == _teamOneColour)
+        if (_ballMeshRenderer.material == _teamOneMaterial)
         {
             isTheBallBeingHeld = true;
             doesTeamOneHoldTheBall = true;
         }
-        else if (_ballMeshRenderer.material.color == _teamTwoColour)
+        else if (_ballMeshRenderer.material == _teamTwoMaterial)
         {
             isTheBallBeingHeld = true;
         }

@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 public class BallColourChange : MonoBehaviour
 {
 
-    [ColorUsage(true, true)]
-    public Color NeutralColor;
+    public Material NeutralMaterial;
+    private GameObject[] _dynamicWalls;
 
     public float NeutralCountdown = 5.0f;
     private float _neutralTimer = 0.0f;
@@ -16,6 +16,8 @@ public class BallColourChange : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _dynamicWalls = GameObject.FindGameObjectsWithTag("Wall");
+
         SetColourToNeutral();
     }
 
@@ -38,13 +40,31 @@ public class BallColourChange : MonoBehaviour
 
     public bool IsBallNeutral()
     {
-        return GetComponent<MeshRenderer>().sharedMaterial.color == NeutralColor;
+        return GetComponent<Renderer>().material == NeutralMaterial;
+    }
+
+    public void SetDynamicMaterials(Material material)
+    {
+        GetComponent<Renderer>().material = material;
+        GetComponent<TrailRenderer>().material = material;
+        GetComponent<ParticleSystemRenderer>().material = material;
+
+        foreach (GameObject wall in _dynamicWalls)
+        {
+            wall.GetComponent<Renderer>().material = material;
+        }
     }
 
     public void SetColourToNeutral()
     {
-        GetComponent<MeshRenderer>().sharedMaterial.color = NeutralColor;
-        GetComponent<MeshRenderer>().sharedMaterial.SetColor("_EmissionColor", NeutralColor);
+        GetComponent<Renderer>().material = NeutralMaterial;
+        GetComponent<TrailRenderer>().material = NeutralMaterial;
+        GetComponent<ParticleSystemRenderer>().material = NeutralMaterial;
+
+        foreach (GameObject wall in _dynamicWalls)
+        {
+            wall.GetComponent<Renderer>().material = NeutralMaterial;
+        }
         _isShot = false;
     }
 

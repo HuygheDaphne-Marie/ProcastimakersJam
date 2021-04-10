@@ -443,9 +443,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ead32455e78edb43883c0c0a64d02e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyTeamColor: {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 0}
-  TeamOneColor: {r: 0, g: 0.9573026, b: 1, a: 0}
-  TeamTwoColor: {r: 1, g: 0.02904705, b: 0, a: 0}
+  TeamOneMaterial: {fileID: 2100000, guid: 4cb06c2f28d561346bb5f6e82c50f32b, type: 2}
+  TeamTwoMaterial: {fileID: 2100000, guid: ad969bcf561a1934fa98bcd079da00a7, type: 2}
 --- !u!114 &4540600347541230763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -625,7 +624,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 3d24bed1acc62b04fa80eb66075ab4da, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -707,7 +706,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 3d24bed1acc62b04fa80eb66075ab4da, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
