@@ -114,6 +114,15 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
+    public void AddSpeedBoost(float multiplier)
+    {
+        _speed *= multiplier;
+    }
+    public void RemoveSpeedBoost(float multiplier)
+    {
+        _speed /= multiplier;
+    }
+
     private void OnMove(InputValue inputValue)
     {
         if (_allowInput)

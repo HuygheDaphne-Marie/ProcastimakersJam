@@ -11,8 +11,8 @@ public class ScoreTracker : MonoBehaviour
     float _tickDuration = 0.5f;
 
     MeshRenderer _ballMeshRenderer;
-    int _teamOneScore = 0;
-    int _teamTwoScore = 0;
+    static int _teamOneScore = 0;
+    static int _teamTwoScore = 0;
     float _currentTickDuration = 0.0f;
     private PlayerInputManager _playerInputManager;
     bool _teamColoursSet = false;
