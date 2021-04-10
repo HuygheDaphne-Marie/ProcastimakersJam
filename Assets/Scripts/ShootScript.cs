@@ -71,6 +71,7 @@ public class ShootScript : MonoBehaviour
             _ball.GetComponent<Collider>().enabled = true;
             _ball.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
             _ball.GetComponent<Rigidbody>().AddForce((this.gameObject.transform.forward * _shootForce), ForceMode.Impulse);
+            _ball.GetComponent<BallColourChange>().OnShoot();
             _canHold = false;
         }
     }
