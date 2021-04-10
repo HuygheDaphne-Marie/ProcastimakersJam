@@ -39,6 +39,7 @@ public class ShootScript : MonoBehaviour
         if (!_canHold)
         {
             _holdCooldown -= Time.deltaTime;
+            _timeBallHeld = 0f;
             if (_holdCooldown <= 0)
             {
                 _canHold = true;
