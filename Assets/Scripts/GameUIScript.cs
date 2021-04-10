@@ -18,8 +18,8 @@ public class GameUIScript : MonoBehaviour
         _scoreBlue.text = ScoreTracker._teamOneScore.ToString();
         _scoreRed.text = ScoreTracker._teamTwoScore.ToString();
 
-        string minutes = Mathf.Floor(ScoreTracker._gameTime / 60).ToString("00");
-        string seconds = (ScoreTracker._gameTime % 60).ToString("00");
+        string minutes = Mathf.Floor(ScoreTracker.GameTime / 60).ToString("00");
+        string seconds = (ScoreTracker.GameTime % 60).ToString("00");
         _timer.text = (string.Format("{0}:{1}", minutes, seconds));
     }
 }

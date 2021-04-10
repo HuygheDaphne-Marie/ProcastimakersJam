@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class ScoreTracker : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class ScoreTracker : MonoBehaviour
     float _tickDuration = 0.5f;
 
     [SerializeField]
-    public static float _gameTime = 120;
+    public static float GameTime = 20;
 
 
 
@@ -36,7 +37,13 @@ public class ScoreTracker : MonoBehaviour
     void Update()
     {
         if (_startGame)
-            _gameTime -= Time.deltaTime;
+        {
+            GameTime -= Time.deltaTime;
+            if(GameTime <= 0f)
+            {
+                SceneManager.LoadScene("EndScreen");
+            }
+        }
 
         if (!_teamColoursSet && _playerInputManager.playerCount > 0)
         {
@@ -58,12 +65,6 @@ public class ScoreTracker : MonoBehaviour
                 doesTeamOneHoldTheBall = true;
             }
         }
-        //else if (_ballMeshRenderer.material == _teamTwoMaterial)
-        //{
-        //    isNotNeutral = true;
-        //}
-
-        //Debug.Log("Team 1 Score: " + _teamOneScore + " Team 2 Score: " + _teamTwoScore);
 
         if (isNotNeutral)
         {
