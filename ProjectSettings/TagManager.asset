@@ -8,8 +8,12 @@ TagManager:
   - Level
   - Bound
   - BallSpawn
+<<<<<<< Updated upstream
   - PickupSpawn
   - Pickup
+=======
+  - Wall
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
