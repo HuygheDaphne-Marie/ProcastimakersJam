@@ -794,6 +794,49 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 8954787700443067028, guid: e5ea37a965202c0429d3402dbb1b10ab, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e5ea37a965202c0429d3402dbb1b10ab, type: 3}
+--- !u!1 &121839183
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 121839185}
+  - component: {fileID: 121839184}
+  m_Layer: 0
+  m_Name: ScoreManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &121839184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121839183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a4c7b8e92cbfd944b7c25412eec41db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &121839185
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121839183}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.9669107, y: 3.0400538, z: -3.6601038}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &244486993
 GameObject:
   m_ObjectHideFlags: 0
@@ -3596,6 +3639,50 @@ PrefabInstance:
       propertyPath: _maxTimeBallCanBeHeld
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8419308297648257736, guid: 4da97670f9ccd93438d9e06395655fde, type: 3}
+      propertyPath: TeamColour.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8419308297648257736, guid: 4da97670f9ccd93438d9e06395655fde, type: 3}
+      propertyPath: TeamColour.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8419308297648257736, guid: 4da97670f9ccd93438d9e06395655fde, type: 3}
+      propertyPath: TeamColour.g
+      value: 0.009601339
+      objectReference: {fileID: 0}
+    - target: {fileID: 8419308297648257736, guid: 4da97670f9ccd93438d9e06395655fde, type: 3}
+      propertyPath: TeamColour.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8419308297648257736, guid: 4da97670f9ccd93438d9e06395655fde, type: 3}
+      propertyPath: TeamOneColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8419308297648257736, guid: 4da97670f9ccd93438d9e06395655fde, type: 3}
+      propertyPath: TeamOneColor.b
+      value: 0.88235295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8419308297648257736, guid: 4da97670f9ccd93438d9e06395655fde, type: 3}
+      propertyPath: TeamOneColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8419308297648257736, guid: 4da97670f9ccd93438d9e06395655fde, type: 3}
+      propertyPath: TeamOneColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8419308297648257736, guid: 4da97670f9ccd93438d9e06395655fde, type: 3}
+      propertyPath: TeamTwoColor.b
+      value: 0.013082923
+      objectReference: {fileID: 0}
+    - target: {fileID: 8419308297648257736, guid: 4da97670f9ccd93438d9e06395655fde, type: 3}
+      propertyPath: TeamTwoColor.g
+      value: 0.013083011
+      objectReference: {fileID: 0}
+    - target: {fileID: 8419308297648257736, guid: 4da97670f9ccd93438d9e06395655fde, type: 3}
+      propertyPath: TeamTwoColor.r
+      value: 0.9245283
+      objectReference: {fileID: 0}
     - target: {fileID: 8690875751946394420, guid: 4da97670f9ccd93438d9e06395655fde, type: 3}
       propertyPath: m_FillAmount
       value: 0
@@ -3676,6 +3763,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
+    - target: {fileID: 8980066425633302573, guid: 4da97670f9ccd93438d9e06395655fde, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4223ef43e6b746b48bae9bbce70884eb, type: 2}
+    - target: {fileID: 8980066425732883411, guid: 4da97670f9ccd93438d9e06395655fde, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4223ef43e6b746b48bae9bbce70884eb, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4da97670f9ccd93438d9e06395655fde, type: 3}
 --- !u!1001 &1243359367
@@ -7892,6 +7987,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1799235733168806609, guid: e08ff36c2731c5f4793e989f4b566fab, type: 3}
+      propertyPath: NeutralColor.b
+      value: 0.7490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799235733168806609, guid: e08ff36c2731c5f4793e989f4b566fab, type: 3}
+      propertyPath: NeutralColor.g
+      value: 0.7490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799235733168806609, guid: e08ff36c2731c5f4793e989f4b566fab, type: 3}
+      propertyPath: NeutralColor.r
+      value: 0.7490196
+      objectReference: {fileID: 0}
     - target: {fileID: 3946755236009111402, guid: e08ff36c2731c5f4793e989f4b566fab, type: 3}
       propertyPath: m_Name
       value: Ball
