@@ -53,10 +53,13 @@ public class PlayerColour : MonoBehaviour
     {
         _trailRenderer.material = _myTeamMaterial;
         _baseRenderer.material = _myTeamBodyMaterials[_myTeamBodyMaterials.Length - 1];
-        for (int i = 0; i < _myTeamBodyMaterials.Length - 1; i++)
-        {
-            _bodyRenderer.materials[i] = _myTeamBodyMaterials[i];
-        }
+
+        Material[] uppMaterials = { _myTeamBodyMaterials[0], _myTeamBodyMaterials[1], _myTeamBodyMaterials[2]};
+        _bodyRenderer.materials = uppMaterials;
+        //for (int i = 0; i < _myTeamBodyMaterials.Length - 1; i++)
+        //{
+        //    _bodyRenderer.materials[i] = _myTeamBodyMaterials[i];
+        //}
     }
 
     private void ChangeBallColorToTeamColor(GameObject ball)
