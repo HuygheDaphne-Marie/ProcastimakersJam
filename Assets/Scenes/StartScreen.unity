@@ -1839,6 +1839,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Buttonsounds
       objectReference: {fileID: 0}
+    - target: {fileID: 3428957555721410027, guid: cc3cb02306bd6134f851848b4c4c43ea, type: 3}
+      propertyPath: m_Volume
+      value: 0.439
+      objectReference: {fileID: 0}
     - target: {fileID: 3428957555721410028, guid: cc3cb02306bd6134f851848b4c4c43ea, type: 3}
       propertyPath: m_RootOrder
       value: 5
