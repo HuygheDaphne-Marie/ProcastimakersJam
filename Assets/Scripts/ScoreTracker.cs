@@ -12,19 +12,20 @@ public class ScoreTracker : MonoBehaviour
     float _tickDuration = 0.5f;
 
     [SerializeField]
-    public static float GameTime = 120;
-
+    public static float GameTime = 10;
 
 
     MeshRenderer _ballMeshRenderer;
-    public static int _teamOneScore = 0;
-    public static int _teamTwoScore = 0;
+    public static int TeamOneScore = 0;
+    public static int TeamTwoScore = 0;
     float _currentTickDuration = 0.0f;
     private PlayerInputManager _playerInputManager;
     bool _startGame = false;
     bool _teamColoursSet = false;
     Material _teamOneMaterial;
     Material _teamTwoMaterial;
+
+    public static bool HasScoreBeenAdded = false;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,8 @@ public class ScoreTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        HasScoreBeenAdded = false;
+
         if (_startGame)
         {
             GameTime -= Time.deltaTime;
@@ -73,12 +76,13 @@ public class ScoreTracker : MonoBehaviour
             {
                 if (doesTeamOneHoldTheBall)
                 {
-                    _teamOneScore += _scorePerTick;
+                    TeamOneScore += _scorePerTick;
                 }
                 else
                 {
-                    _teamTwoScore += _scorePerTick;
+                    TeamTwoScore += _scorePerTick;
                 }
+                HasScoreBeenAdded = true;
                 _currentTickDuration = 0f;
             }
         }
