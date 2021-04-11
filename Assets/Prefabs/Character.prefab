@@ -590,7 +590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HoldPosition: {fileID: 7449075760427274318}
-  _shootForce: 25
+  _shootForce: 40
   _maxTimeBallCanBeHeld: 1
   _timerImage: {fileID: 7724046502195063861}
   _rumbleTime: 0.3
