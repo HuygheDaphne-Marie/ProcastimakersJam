@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class ScoreTracker : MonoBehaviour
 {
@@ -10,14 +11,20 @@ public class ScoreTracker : MonoBehaviour
     [SerializeField]
     float _tickDuration = 0.5f;
 
+    [SerializeField]
+    public static float GameTime = 120;
+
+
+
     MeshRenderer _ballMeshRenderer;
-    int _teamOneScore = 0;
-    int _teamTwoScore = 0;
+    public static int _teamOneScore = 0;
+    public static int _teamTwoScore = 0;
     float _currentTickDuration = 0.0f;
     private PlayerInputManager _playerInputManager;
+    bool _startGame = false;
     bool _teamColoursSet = false;
-    Color _teamOneColour;
-    Color _teamTwoColour;
+    Material _teamOneMaterial;
+    Material _teamTwoMaterial;
 
     // Start is called before the first frame update
     void Start()
@@ -29,28 +36,37 @@ public class ScoreTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!_teamColoursSet && _playerInputManager.playerCount > 0)
+        if (_startGame)
         {
+            GameTime -= Time.deltaTime;
+            if(GameTime <= 0f)
+            {
+                SceneManager.LoadScene("EndScreen");
+            }
+        }
+
+        if (!_teamColoursSet && _playerInputManager.playerCount > 0)
+        {
+            _startGame = true;
             _teamColoursSet = true;
             var playercolour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerColour>();
-            _teamOneColour = playercolour.TeamOneColor;
-            _teamTwoColour = playercolour.TeamTwoColor;
+            _teamOneMaterial = playercolour.TeamOneMaterial;
+            _teamTwoMaterial = playercolour.TeamTwoMaterial;
         }
 
-        bool isTheBallBeingHeld = false;
+        bool isNotNeutral = false;
         bool doesTeamOneHoldTheBall = false;
 
-        if (_ballMeshRenderer.material.color == _teamOneColour)
+        if (!PlayerColour.IsBallNeutral)
         {
-            isTheBallBeingHeld = true;
-            doesTeamOneHoldTheBall = true;
-        }
-        else if (_ballMeshRenderer.material.color == _teamTwoColour)
-        {
-            isTheBallBeingHeld = true;
+            isNotNeutral = true;
+            if (PlayerColour.DoesTeamOneHoldBall)
+            {
+                doesTeamOneHoldTheBall = true;
+            }
         }
 
-        if (isTheBallBeingHeld)
+        if (isNotNeutral)
         {
             _currentTickDuration += Time.deltaTime;
             if (_currentTickDuration >= _tickDuration)
@@ -64,7 +80,6 @@ public class ScoreTracker : MonoBehaviour
                     _teamTwoScore += _scorePerTick;
                 }
                 _currentTickDuration = 0f;
-                Debug.Log("Team 1 Score: " + _teamOneScore + " Team 2 Score: " + _teamTwoScore);
             }
         }
         else

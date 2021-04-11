@@ -16,25 +16,31 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField]
     Image _dashTimerImage;
 
+    [SerializeField]
+    Transform _wheelTransform;
 
 
     Vector2 _inputMovement;
     Vector2 _inputRotation;
     Rigidbody _rigidBody;
+    Transform _bodyTransform;
     bool _hasDashed = false;
     float _inputCooldownTimer = 0f;
     float _dashCooldownTimer = 0f;
     bool _allowInput = true;
     bool _MustDash = false;
     ShootScript _shootScript;
+    TrailRenderer _trailRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
         _rigidBody = this.GetComponent<Rigidbody>();
+        _bodyTransform = this.transform.GetChild(0).transform;
         _shootScript = this.transform.GetComponent<ShootScript>();
         _dashCooldownTimer = maxDashCooldownTimer;
         _inputCooldownTimer = maxInputCooldownTimer;
+        _trailRenderer = this.GetComponent<TrailRenderer>();
     }
 
     // Update is called once per frame
@@ -71,6 +77,7 @@ public class CharacterMovement : MonoBehaviour
     {
         if (_allowInput)
         {
+            Debug.Log(_inputMovement);
             if (_inputMovement != Vector2.zero)
             {
                 _rigidBody.velocity = new Vector3((_inputMovement.x * _speed) + _rigidBody.velocity.x, 0f, (_inputMovement.y * _speed) + _rigidBody.velocity.z);
@@ -88,22 +95,23 @@ public class CharacterMovement : MonoBehaviour
         {
             Quaternion newRotation = Quaternion.LookRotation(new Vector3(_inputRotation.x, 0f, _inputRotation.y), Vector3.up);
 
-            _rigidBody.rotation = Quaternion.Lerp(_rigidBody.rotation, newRotation, _rotationSpeed);
+            _bodyTransform.rotation = Quaternion.Lerp(_bodyTransform.rotation, newRotation, _rotationSpeed);
         }
-        else
+         _rigidBody.angularVelocity = Vector3.zero;
+
+        if (_inputMovement != Vector2.zero)
         {
-            _rigidBody.angularVelocity = Vector3.zero;
+            Quaternion newRotation = Quaternion.LookRotation(new Vector3(_inputMovement.x, 0f, _inputMovement.y), Vector3.up);
+
+            _wheelTransform.rotation = Quaternion.Lerp(_rigidBody.rotation, newRotation, _rotationSpeed);
         }
+
     }
 
     private void HandleDash()
     {
         if (_MustDash && !_hasDashed)
         {
-            // _rigidBody.velocity.Normalize();
-            // _rigidBody.velocity = new Vector3(_rigidBody.velocity.x * _dashSpeedIncrease, 0f, _rigidBody.velocity.z * _dashSpeedIncrease);
-            // Debug.Log(_rigidBody.velocity);
-
             _hasDashed = true;
             _MustDash = false;
 
@@ -112,6 +120,17 @@ public class CharacterMovement : MonoBehaviour
             _rigidBody.velocity = Vector3.zero;
             _rigidBody.AddForce(new Vector3(currentVelocity.x * _dashSpeedIncrease, currentVelocity.y, currentVelocity.z * _dashSpeedIncrease), ForceMode.Impulse);
         }
+    }
+
+    public void AddSpeedBoost(float multiplier)
+    {
+        _speed *= multiplier;
+        _trailRenderer.enabled = true;
+    }
+    public void RemoveSpeedBoost(float multiplier)
+    {
+        _speed /= multiplier;
+        _trailRenderer.enabled = false;
     }
 
     private void OnMove(InputValue inputValue)
@@ -129,6 +148,8 @@ public class CharacterMovement : MonoBehaviour
     {
         if (!_hasDashed && !_shootScript._isHolding)
         {
+            GameObject.Find("SoundManager").GetComponent<AudioSource>().pitch = 1;
+            GameObject.Find("SoundManager").GetComponent<SoundManagerScript>().PlayDash();
             //_hasDashed = true;
             _allowInput = false;
             _MustDash = true;

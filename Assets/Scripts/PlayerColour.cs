@@ -2,20 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerColour : MonoBehaviour
 {
-    [ColorUsage(true, true)]
-    public Color MyTeamColor;
+    private Material _myTeamMaterial;
+    public Material TeamOneMaterial;
+    public Material TeamTwoMaterial;
 
-    [ColorUsage(true, true)]
+    private Color _myColor;
     public Color TeamOneColor;
-    [ColorUsage(true, true)]
     public Color TeamTwoColor;
+
+    private Material[] _myTeamBodyMaterials;
+    public Material[] TeamOneBodyMaterials;
+    public Material[] TeamTwoBodyMaterials;
+
     private MeshRenderer _bodyRenderer;
-    private MeshRenderer _armRenderer;
+    private MeshRenderer _baseRenderer;
+    private TrailRenderer _trailRenderer;
+    private Image _timerImage;
+    private Text _playerNumber;
+    private Image _panelImage;
 
     private PlayerInputManager _playerInputManager;
+
+    static public bool IsBallNeutral = true;
+    static public bool DoesTeamOneHoldBall = false;
+    static private int _blueteamPlayers = 0;
+    static private int _redTeamPlayers = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -23,17 +38,31 @@ public class PlayerColour : MonoBehaviour
         _playerInputManager = GameObject.Find("PlayerInputManager").GetComponent<PlayerInputManager>();
 
         _bodyRenderer = transform.GetChild(0).GetComponent<MeshRenderer>();
-        _armRenderer = _bodyRenderer.transform.GetChild(0).GetComponent<MeshRenderer>();
+        _baseRenderer = transform.GetChild(1).GetComponent<MeshRenderer>();
+        _trailRenderer = GetComponent<TrailRenderer>();
+        _timerImage = transform.GetChild(2).GetChild(0).GetComponent<Image>(); 
+        _playerNumber = transform.GetChild(2).GetChild(2).GetChild(0).GetComponent<Text>(); // dot hell
+        _panelImage = transform.GetChild(2).GetChild(2).GetComponent<Image>(); // dot hell
 
-        if (_playerInputManager.playerCount % 2 == 0)
+        if (_playerInputManager.playerCount % 2 != 0)
         {
-            MyTeamColor = TeamOneColor;
+            _myColor = TeamOneColor;
+            _myTeamMaterial = TeamOneMaterial;
+            _myTeamBodyMaterials = TeamOneBodyMaterials;
+            _blueteamPlayers++;
+            _playerNumber.text = _blueteamPlayers.ToString();
+            
         }
         else
         {
-            MyTeamColor = TeamTwoColor;
-        }
+            _myColor = TeamTwoColor;
+            _myTeamMaterial = TeamTwoMaterial;
+            _myTeamBodyMaterials = TeamTwoBodyMaterials;
+            _redTeamPlayers++;
+            _playerNumber.text = _redTeamPlayers.ToString();
 
+        }
+        _panelImage.color = _myColor;
         SetInstanceColorToTeamColor();
     }
 
@@ -47,18 +76,27 @@ public class PlayerColour : MonoBehaviour
 
     private void SetInstanceColorToTeamColor()
     {
-        _bodyRenderer.material.color = MyTeamColor;
-        _bodyRenderer.material.SetColor("_EmissionColor", MyTeamColor);
+        _timerImage.color = _myColor;
+        _trailRenderer.material = _myTeamMaterial;
+        _baseRenderer.material = _myTeamBodyMaterials[_myTeamBodyMaterials.Length - 1];
 
-        _armRenderer.material.color = MyTeamColor;
-        _armRenderer.material.SetColor("_EmissionColor", MyTeamColor);
-
+        Material[] uppMaterials = { _myTeamBodyMaterials[0], _myTeamBodyMaterials[1], _myTeamBodyMaterials[2]};
+        _bodyRenderer.materials = uppMaterials;
     }
 
     private void ChangeBallColorToTeamColor(GameObject ball)
     {
-        ball.GetComponent<MeshRenderer>().sharedMaterial.color = MyTeamColor;
-        ball.GetComponent<MeshRenderer>().sharedMaterial.SetColor("_EmissionColor", MyTeamColor);
-
+        ball.GetComponent<BallColourChange>().SetDynamicMaterials(_myTeamMaterial);
+        if(_myTeamMaterial == TeamOneMaterial)
+        {
+            DoesTeamOneHoldBall = true;
+            Debug.Log("Team One!");
+        }
+        else
+        {
+            DoesTeamOneHoldBall = false;
+            Debug.Log("Team Two!");
+        }
+        IsBallNeutral = false;
     }
 }

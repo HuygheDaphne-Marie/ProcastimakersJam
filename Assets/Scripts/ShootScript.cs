@@ -13,6 +13,10 @@ public class ShootScript : MonoBehaviour
     float _maxTimeBallCanBeHeld = 5f;
     [SerializeField]
     Image _timerImage;
+    [SerializeField]
+    float _rumbleTime = 0.3f;
+    [SerializeField]
+    float _rumbleStrength = 0.1f;
 
     public bool _isHolding;
     float _holdCooldown = 0.5f;
@@ -21,6 +25,9 @@ public class ShootScript : MonoBehaviour
     bool _canHold = true;
     GameObject _ball;
     float _timeBallHeld = 0f;
+    float _currentRumbleTimer = 0f;
+    bool _isRumbling = false;
+    Gamepad _gamepad;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +44,7 @@ public class ShootScript : MonoBehaviour
             _timeBallHeld -= Time.deltaTime;
             _timerImage.fillAmount = _timeBallHeld / _maxTimeBallCanBeHeld;
         }
-        if(_timeBallHeld <= 0)
+        if (_timeBallHeld <= 0)
         {
             Shoot();
         }
@@ -50,12 +57,24 @@ public class ShootScript : MonoBehaviour
                 _holdCooldown = _maxHoldCooldown;
             }
         }
+        if (_isRumbling)
+        {
+            _currentRumbleTimer += Time.deltaTime;
+            if (_currentRumbleTimer >= _rumbleTime)
+            {
+                _currentRumbleTimer = 0f;
+                _isRumbling = false;
+                _gamepad.PauseHaptics();
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Ball" && _canHold)
         {
+            GameObject.Find("SoundManager").GetComponent<AudioSource>().pitch = 1;
+            GameObject.Find("SoundManager").GetComponent<SoundManagerScript>().PlayGrab();
             _isHolding = true;
             _timeBallHeld = _maxTimeBallCanBeHeld;
             _ball.GetComponent<Collider>().enabled = false;
@@ -71,16 +90,27 @@ public class ShootScript : MonoBehaviour
             _timerImage.fillAmount = 0;
             _ball.GetComponent<Collider>().enabled = true;
             _ball.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-            _ball.GetComponent<Rigidbody>().AddForce((this.gameObject.transform.forward * _shootForce), ForceMode.Impulse);
+            _ball.GetComponent<Rigidbody>().AddForce((this.transform.GetChild(0).gameObject.transform.forward * _shootForce), ForceMode.Impulse);
             _ball.GetComponent<BallColourChange>().OnShoot();
+            GameObject.Find("SoundManager").GetComponent<AudioSource>().pitch = 1;
+            GameObject.Find("SoundManager").GetComponent<SoundManagerScript>().PlayShoot();
             _canHold = false;
         }
     }
 
     private void OnShoot(InputValue value)
     {
+        var gamepads = Gamepad.all;
+        foreach (Gamepad element in gamepads)
+        {
+            if(element.leftTrigger.wasPressedThisFrame)
+            {
+                _gamepad = element;
+            }
+        }
+        _gamepad.SetMotorSpeeds(_rumbleStrength, _rumbleStrength);
+        _isRumbling = true;
         Shoot();
-        Debug.Log("Shoot");
     }
 
 

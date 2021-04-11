@@ -68,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e18b21cd695c21649aae8193efd42048, type: 2}
+  - {fileID: 2100000, guid: 3d24bed1acc62b04fa80eb66075ab4da, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -151,7 +151,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e18b21cd695c21649aae8193efd42048, type: 2}
+  - {fileID: 2100000, guid: 3d24bed1acc62b04fa80eb66075ab4da, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5023,7 +5023,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e18b21cd695c21649aae8193efd42048, type: 2}
+  - {fileID: 2100000, guid: 3d24bed1acc62b04fa80eb66075ab4da, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5093,7 +5093,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c987ece17252d441a5d70f616cd8e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NeutralColor: {r: 0, g: 0, b: 0, a: 0}
+  NeutralMaterial: {fileID: 2100000, guid: 3d24bed1acc62b04fa80eb66075ab4da, type: 2}
   NeutralCountdown: 5
 --- !u!114 &7869872183454074814
 MonoBehaviour:
@@ -5107,3 +5107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2181d19ba13b5e44ade905dec54f882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _leftBound: {fileID: 0}
+  _topBound: {fileID: 0}
+  _rightBound: {fileID: 0}
+  _bottomBound: {fileID: 0}

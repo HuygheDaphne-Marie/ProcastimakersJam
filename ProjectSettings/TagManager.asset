@@ -8,6 +8,9 @@ TagManager:
   - Level
   - Bound
   - BallSpawn
+  - PickupSpawn
+  - Pickup
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -19,8 +22,8 @@ TagManager:
   - Level
   - Player
   - Ball
-  - 
-  - 
+  - Pickup
+  - Wall
   - 
   - 
   - 
