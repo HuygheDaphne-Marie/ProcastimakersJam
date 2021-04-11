@@ -14,6 +14,8 @@ public class SoundManagerScript : MonoBehaviour
     AudioClip _shootSound;
     [SerializeField]
     AudioClip _dashSound;
+    [SerializeField]
+    AudioClip _powerupSound;
     // Start is called before the first frame update
     public void PlayBounce()
     {
@@ -31,11 +33,13 @@ public class SoundManagerScript : MonoBehaviour
     public void PlayShoot()
     {
         this.GetComponent<AudioSource>().PlayOneShot(_shootSound);
-
     }
     public void PlayDash()
     {
         this.GetComponent<AudioSource>().PlayOneShot(_dashSound);
-
+    }
+    public void PlayPowerup()
+    {
+        this.GetComponent<AudioSource>().PlayOneShot(_powerupSound);
     }
 }

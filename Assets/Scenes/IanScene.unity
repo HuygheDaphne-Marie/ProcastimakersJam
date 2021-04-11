@@ -317,7 +317,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &122913002
 GameObject:
@@ -1322,6 +1322,7 @@ MonoBehaviour:
   _grabSound: {fileID: 8300000, guid: 18f6ec5a0525b1e47bf927d8ac384240, type: 3}
   _shootSound: {fileID: 8300000, guid: 2258985471b02a54f9d1127f265ca0c4, type: 3}
   _dashSound: {fileID: 8300000, guid: 99344fbbb702afc438a9f4e04d8aa639, type: 3}
+  _powerupSound: {fileID: 8300000, guid: 92cfa58c2d78b3e4aa8922155d8944c2, type: 3}
 --- !u!4 &1050881701
 Transform:
   m_ObjectHideFlags: 0
@@ -2486,7 +2487,7 @@ PrefabInstance:
       objectReference: {fileID: 6925074118466335368, guid: b7a76de6d6dd676459157944a25671b8, type: 3}
     - target: {fileID: 3241357483706932541, guid: fb65e4af836461a48a7fcdf5eac80dc0, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3241357483706932541, guid: fb65e4af836461a48a7fcdf5eac80dc0, type: 3}
       propertyPath: m_LocalPosition.x
