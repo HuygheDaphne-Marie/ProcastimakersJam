@@ -599,7 +599,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 14ffb91eb1ee45747bc73235866f6ee7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fa9ffa6b936e7a64c9a58eadf70eedd8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -967,10 +967,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfe58eec16977744a99437bb4acaf2bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _TeamOneWonTexture: {fileID: 21300000, guid: b8babd9c4142b1340b6b641205ba951a, type: 3}
-  _TeamTwoWonTexture: {fileID: 21300000, guid: 14ffb91eb1ee45747bc73235866f6ee7, type: 3}
+  _TeamOneWonTexture: {fileID: 21300000, guid: e39f18540d3c1d84a8a072049913d985, type: 3}
+  _TeamTwoWonTexture: {fileID: 21300000, guid: fa9ffa6b936e7a64c9a58eadf70eedd8, type: 3}
   _scoreRed: {fileID: 628045436}
-  _scoreBlue: {fileID: 0}
+  _scoreBlue: {fileID: 1127798976}
 --- !u!1 &1127798974
 GameObject:
   m_ObjectHideFlags: 0
