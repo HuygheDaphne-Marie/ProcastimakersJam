@@ -22,9 +22,12 @@ public class ShootScript : MonoBehaviour
     GameObject _ball;
     float _timeBallHeld = 0f;
 
+    Animator _bodyAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
+        _bodyAnimator = transform.GetChild(0).GetComponent<Animator>();
         _ball = GameObject.Find("Ball");
     }
 
@@ -58,6 +61,7 @@ public class ShootScript : MonoBehaviour
         {
             GameObject.Find("SoundManager").GetComponent<AudioSource>().pitch = 1;
             GameObject.Find("SoundManager").GetComponent<SoundManagerScript>().PlayGrab();
+            _bodyAnimator.SetTrigger("Catch");
             _isHolding = true;
             _timeBallHeld = _maxTimeBallCanBeHeld;
             _ball.GetComponent<Collider>().enabled = false;
@@ -69,11 +73,12 @@ public class ShootScript : MonoBehaviour
     {
         if (_isHolding)
         {
+            _bodyAnimator.SetTrigger("Shoot");
             _isHolding = false;
             _timerImage.fillAmount = 0;
             _ball.GetComponent<Collider>().enabled = true;
             _ball.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-            _ball.GetComponent<Rigidbody>().AddForce((this.gameObject.transform.forward * _shootForce), ForceMode.Impulse);
+            _ball.GetComponent<Rigidbody>().AddForce((_bodyAnimator.gameObject.transform.forward * _shootForce), ForceMode.Impulse);
             _ball.GetComponent<BallColourChange>().OnShoot();
             GameObject.Find("SoundManager").GetComponent<AudioSource>().pitch = 1;
             GameObject.Find("SoundManager").GetComponent<SoundManagerScript>().PlayShoot();
