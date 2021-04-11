@@ -11,6 +11,7 @@ public class SpawnPickupScript : MonoBehaviour
     List<GameObject> _prefabs;
 
     GameObject[] _pickupSpawns;
+    Vector3 _previousSpawnLocation;
     private PlayerInputManager _playerInputManager;
     float _currentTime;
 
@@ -29,7 +30,7 @@ public class SpawnPickupScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_playerInputManager.playerCount <= 0) // we only want to spawn pickups if there are players on the field
+        if (_playerInputManager.playerCount <= 0 && _playerInputManager.playerCount > 1) // we only want to spawn pickups if there are > 1 players on the field
         {
             return;
         }
@@ -42,8 +43,23 @@ public class SpawnPickupScript : MonoBehaviour
             {
                 _currentTime = 0f;
 
-                GameObject speed = GameObject.Instantiate(_prefabs[Random.Range(0, _prefabs.Count)]); // start at 1 so it doesnt take the parent object
-                speed.transform.position = _pickupSpawns[Random.Range(0, _pickupSpawns.Length)].transform.position;
+                Vector3 location;
+
+                if (_previousSpawnLocation == Vector3.zero)
+                {
+                    location = _pickupSpawns[Random.Range(0, _pickupSpawns.Length)].transform.position;
+                }
+                else
+                {
+                    do
+                    {
+                        location = _pickupSpawns[Random.Range(0, _pickupSpawns.Length)].transform.position;
+                    } while (location == _previousSpawnLocation);
+                }
+
+                Debug.Log(location);
+                GameObject.Instantiate(_prefabs[Random.Range(0, _prefabs.Count)], location, Quaternion.identity);
+                _previousSpawnLocation = location;
             }
         }
     }

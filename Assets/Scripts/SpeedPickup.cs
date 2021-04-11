@@ -42,7 +42,7 @@ public class SpeedPickup : MonoBehaviour
             _playerMovement.AddSpeedBoost(_speedMultiplier);
             this.GetComponent<ParticleSystem>().Play();
             GameObject.Find("SoundManager").GetComponent<SoundManagerScript>().PlayPowerup();
-            this.GetComponent<MeshRenderer>().enabled = false;
+            this.transform.GetChild(0).GetComponent<MeshRenderer>().enabled = false;
             this.GetComponent<BoxCollider>().enabled = false;
         }
     }
