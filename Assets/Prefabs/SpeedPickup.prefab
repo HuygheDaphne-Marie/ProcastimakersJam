@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 7609211291550917014}
   - component: {fileID: 3793842298948209478}
   - component: {fileID: 3950491510708295276}
-  - component: {fileID: 4060279880876055509}
   - component: {fileID: 1025529434458872665}
   - component: {fileID: 4541615324913094541}
+  - component: {fileID: 4580135804193923529}
   m_Layer: 10
   m_Name: SpeedPickup
   m_TagString: Pickup
@@ -36,7 +36,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 349.91998, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 188.49881, z: 0}
 --- !u!33 &2329547792806738512
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -113,22 +113,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speedMultiplier: 2
   _speedBoostDuration: 3
---- !u!111 &4060279880876055509
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6925074118466335368}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 32a307d7ae0238846b73eb85b164a34c, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 32a307d7ae0238846b73eb85b164a34c, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!198 &1025529434458872665
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4960,3 +4944,19 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!111 &4580135804193923529
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6925074118466335368}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 32a307d7ae0238846b73eb85b164a34c, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 32a307d7ae0238846b73eb85b164a34c, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
