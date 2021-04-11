@@ -43,22 +43,18 @@ public class PlayerJoinUIScript : MonoBehaviour
                 if (_playerInputManager.playerCount >= 1)
                 {
                     _upperLeftPanel.GetComponent<Image>().enabled = false;
-                    _upperLeftPanel.GetChild(0).GetComponent<Text>().enabled = false;
                 }
                 if (_playerInputManager.playerCount >= 2)
                 {
                     _upperRightPanel.GetComponent<Image>().enabled = false;
-                    _upperRightPanel.GetChild(0).GetComponent<Text>().enabled = false;
                 }
                 if (_playerInputManager.playerCount >= 3)
                 {
                     _lowerLeftPanel.GetComponent<Image>().enabled = false;
-                    _lowerLeftPanel.GetChild(0).GetComponent<Text>().enabled = false;
                 }
                 if (_playerInputManager.playerCount >= 4)
                 {
                     _lowerRightPanel.GetComponent<Image>().enabled = false;
-                    _lowerRightPanel.GetChild(0).GetComponent<Text>().enabled = false;
                     _hasUIBeenDisabled = true;
                 }
             }
@@ -68,12 +64,8 @@ public class PlayerJoinUIScript : MonoBehaviour
     private void DisabeAllUI()
     {
         _upperLeftPanel.GetComponent<Image>().enabled = false;
-        _upperLeftPanel.GetChild(0).GetComponent<Text>().enabled = false;
         _upperRightPanel.GetComponent<Image>().enabled = false;
-        _upperRightPanel.GetChild(0).GetComponent<Text>().enabled = false;
         _lowerLeftPanel.GetComponent<Image>().enabled = false;
-        _lowerLeftPanel.GetChild(0).GetComponent<Text>().enabled = false;
         _lowerRightPanel.GetComponent<Image>().enabled = false;
-        _lowerRightPanel.GetChild(0).GetComponent<Text>().enabled = false;
     }
 }
