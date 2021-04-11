@@ -398,6 +398,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 122913002}
   m_CullTransparentMesh: 1
+--- !u!1 &184691332
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 184691334}
+  - component: {fileID: 184691333}
+  m_Layer: 0
+  m_Name: EasterEgg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &184691333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184691332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6eacfb2f5af21941b0c252309ea4cf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _toChange:
+  - {fileID: 8728723279243128920}
+  - {fileID: 7521239854163346137}
+  - {fileID: 4541402311625759879}
+  - {fileID: 8079473458007730579}
+  - {fileID: 1733961200688427129}
+  - {fileID: 6780965286863586059}
+  - {fileID: 236368928209769634}
+  - {fileID: 4788986229367992703}
+  - {fileID: 5917838830735240567}
+  - {fileID: 6060457579201598022}
+  - {fileID: 9176412027634349468}
+  - {fileID: 6088068028002747740}
+  - {fileID: 4620050832773996493}
+  _material: {fileID: 2100000, guid: c44ac5887621f134b976555efe68fdc7, type: 2}
+  Center: {fileID: 2710275904273463847}
+  Song: {fileID: 8300000, guid: d3a60bb72ade11b499883fa43b3d7814, type: 3}
+  WaitTime: 10
+--- !u!4 &184691334
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184691332}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.7470484, y: 0.9205102, z: -1.3928672}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &193054027
 GameObject:
   m_ObjectHideFlags: 0

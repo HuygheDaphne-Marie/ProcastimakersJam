@@ -19,7 +19,7 @@ public class PlayerColour : MonoBehaviour
     public Material[] TeamTwoBodyMaterials;
 
     private SkinnedMeshRenderer _bodyRenderer;
-    private MeshRenderer _baseRenderer;
+    private SkinnedMeshRenderer _baseRenderer;
     private TrailRenderer _trailRenderer;
     private Image _timerImage;
     private Text _playerNumber;
@@ -38,7 +38,7 @@ public class PlayerColour : MonoBehaviour
         _playerInputManager = GameObject.Find("PlayerInputManager").GetComponent<PlayerInputManager>();
 
         _bodyRenderer = transform.GetChild(0).GetChild(2).GetComponent<SkinnedMeshRenderer>();
-        _baseRenderer = transform.GetChild(1).GetComponent<MeshRenderer>();
+        _baseRenderer = transform.GetChild(1).GetComponentInChildren<SkinnedMeshRenderer>();
         _trailRenderer = GetComponent<TrailRenderer>();
         _timerImage = transform.GetChild(2).GetChild(0).GetComponent<Image>(); 
         _playerNumber = transform.GetChild(2).GetChild(2).GetChild(0).GetComponent<Text>(); // dot hell

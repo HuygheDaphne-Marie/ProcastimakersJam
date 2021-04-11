@@ -15,8 +15,8 @@ public class GameUIScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _scoreBlue.text = ScoreTracker._teamOneScore.ToString();
-        _scoreRed.text = ScoreTracker._teamTwoScore.ToString();
+        _scoreBlue.text = ScoreTracker.TeamOneScore.ToString();
+        _scoreRed.text = ScoreTracker.TeamTwoScore.ToString();
 
         string minutes = Mathf.Floor(ScoreTracker.GameTime / 60).ToString("00");
         string seconds = (ScoreTracker.GameTime % 60).ToString("00");

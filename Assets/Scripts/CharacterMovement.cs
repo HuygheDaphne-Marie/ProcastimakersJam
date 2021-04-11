@@ -19,6 +19,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField]
     Transform _wheelTransform;
 
+    Animator _wheelAnimator;
 
     Vector2 _inputMovement;
     Vector2 _inputRotation;
@@ -35,6 +36,7 @@ public class CharacterMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _wheelAnimator = _wheelTransform.GetComponent<Animator>();
         _rigidBody = this.GetComponent<Rigidbody>();
         _bodyTransform = this.transform.GetChild(0).transform;
         _shootScript = this.transform.GetComponent<ShootScript>();
@@ -64,6 +66,7 @@ public class CharacterMovement : MonoBehaviour
                 _inputCooldownTimer = maxInputCooldownTimer;
             }
         }
+        _wheelAnimator.SetFloat("PlayerSpeed", _rigidBody.velocity.magnitude);
     }
 
     private void FixedUpdate()
