@@ -110,8 +110,11 @@ public class ShootScript : MonoBehaviour
                     break;
                 }
             }
-            _gamepad.SetMotorSpeeds(_rumbleStrength, _rumbleStrength);
-            _isRumbling = true;
+            if (_gamepad != null)
+            {
+                _gamepad.SetMotorSpeeds(_rumbleStrength, _rumbleStrength);
+                _isRumbling = true;
+            }
         }
     }
 
