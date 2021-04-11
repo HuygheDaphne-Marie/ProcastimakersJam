@@ -15,7 +15,7 @@ public class PlayerJoinUIScript : MonoBehaviour
     Transform _lowerLeftPanel;
     Transform _lowerRightPanel;
     float _currentTime = 0f;
-    bool _hasUIBeenDisabled = false;
+    static public bool HasUIBeenDisabled = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,13 +30,13 @@ public class PlayerJoinUIScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!_hasUIBeenDisabled)
+        if (!HasUIBeenDisabled)
         {
             _currentTime += Time.deltaTime;
             if (_currentTime >= _timeToJoin)
             {
                 DisabeAllUI();
-                _hasUIBeenDisabled = true;
+                HasUIBeenDisabled = true;
             }
             else
             {
@@ -55,7 +55,7 @@ public class PlayerJoinUIScript : MonoBehaviour
                 if (_playerInputManager.playerCount >= 4)
                 {
                     _lowerRightPanel.GetComponent<Image>().enabled = false;
-                    _hasUIBeenDisabled = true;
+                    HasUIBeenDisabled = true;
                 }
             }
         }

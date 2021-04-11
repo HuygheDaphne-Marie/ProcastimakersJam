@@ -16,6 +16,9 @@ public class RainbowTrim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!PlayerJoinUIScript.HasUIBeenDisabled)
+            return;
+
         if (!ScoreTracker.HasScoreBeenAdded)
             _timer += Time.deltaTime;
         else
