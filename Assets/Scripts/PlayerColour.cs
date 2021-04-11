@@ -29,8 +29,8 @@ public class PlayerColour : MonoBehaviour
 
     static public bool IsBallNeutral = true;
     static public bool DoesTeamOneHoldBall = false;
-    static private int _blueteamPlayers = 0;
-    static private int _redTeamPlayers = 0;
+    static public int BlueteamPlayers = 0;
+    static public int RedTeamPlayers = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -49,8 +49,8 @@ public class PlayerColour : MonoBehaviour
             _myColor = TeamOneColor;
             _myTeamMaterial = TeamOneMaterial;
             _myTeamBodyMaterials = TeamOneBodyMaterials;
-            _blueteamPlayers++;
-            _playerNumber.text = _blueteamPlayers.ToString();
+            BlueteamPlayers++;
+            _playerNumber.text = BlueteamPlayers.ToString();
             
         }
         else
@@ -58,8 +58,8 @@ public class PlayerColour : MonoBehaviour
             _myColor = TeamTwoColor;
             _myTeamMaterial = TeamTwoMaterial;
             _myTeamBodyMaterials = TeamTwoBodyMaterials;
-            _redTeamPlayers++;
-            _playerNumber.text = _redTeamPlayers.ToString();
+            RedTeamPlayers++;
+            _playerNumber.text = RedTeamPlayers.ToString();
 
         }
         _panelImage.color = _myColor;

@@ -28,9 +28,9 @@ public class EndScreenScript : MonoBehaviour
         {
             _currentImage.sprite = _TeamOneWonTexture;
 
-            var temp = _scoreRed.transform;
+            var temp = _scoreRed.transform.position;
             _scoreRed.transform.position = _scoreBlue.transform.position;
-            _scoreBlue.transform.position = temp.position;
+            _scoreBlue.transform.position = temp;
         }
         else if (ScoreTracker.TeamOneScore < ScoreTracker.TeamTwoScore)
         {
@@ -40,9 +40,9 @@ public class EndScreenScript : MonoBehaviour
         {
             _currentImage.sprite = _TeamOneWonTexture;
 
-            var temp = _scoreRed.transform.position;
-            _scoreRed.transform.position = _scoreBlue.transform.position;
-            _scoreBlue.transform.position = temp;
+           var temp = _scoreRed.transform.position;
+           _scoreRed.transform.position = _scoreBlue.transform.position;
+           _scoreBlue.transform.position = temp;
         }
 
         _scoreBlue.text = ScoreTracker.TeamOneScore.ToString();

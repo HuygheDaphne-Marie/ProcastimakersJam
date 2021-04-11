@@ -11,8 +11,7 @@ public class ScoreTracker : MonoBehaviour
     [SerializeField]
     float _tickDuration = 0.5f;
 
-    [SerializeField]
-    public static float GameTime = 180;
+    public static float GameTime = 120;
 
 
     MeshRenderer _ballMeshRenderer;
@@ -37,12 +36,11 @@ public class ScoreTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (_startGame)
         {
             HasScoreBeenAdded = false;
             GameTime -= Time.deltaTime;
-            if(GameTime <= 0f)
+            if (GameTime <= 0f)
             {
                 SceneManager.LoadScene("EndScreen");
             }
@@ -57,38 +55,41 @@ public class ScoreTracker : MonoBehaviour
             _teamTwoMaterial = playercolour.TeamTwoMaterial;
         }
 
-        bool isNotNeutral = false;
-        bool doesTeamOneHoldTheBall = false;
-
-        if (!PlayerColour.IsBallNeutral)
+        if (_playerInputManager.playerCount > 1)
         {
-            isNotNeutral = true;
-            if (PlayerColour.DoesTeamOneHoldBall)
+            bool isNotNeutral = false;
+            bool doesTeamOneHoldTheBall = false;
+
+            if (!PlayerColour.IsBallNeutral)
             {
-                doesTeamOneHoldTheBall = true;
+                isNotNeutral = true;
+                if (PlayerColour.DoesTeamOneHoldBall)
+                {
+                    doesTeamOneHoldTheBall = true;
+                }
             }
-        }
 
-        if (isNotNeutral)
-        {
-            _currentTickDuration += Time.deltaTime;
-            if (_currentTickDuration >= _tickDuration)
+            if (isNotNeutral)
             {
-                if (doesTeamOneHoldTheBall)
+                _currentTickDuration += Time.deltaTime;
+                if (_currentTickDuration >= _tickDuration)
                 {
-                    TeamOneScore += _scorePerTick;
+                    if (doesTeamOneHoldTheBall)
+                    {
+                        TeamOneScore += _scorePerTick;
+                    }
+                    else
+                    {
+                        TeamTwoScore += _scorePerTick;
+                    }
+                    HasScoreBeenAdded = true;
+                    _currentTickDuration = 0f;
                 }
-                else
-                {
-                    TeamTwoScore += _scorePerTick;
-                }
-                HasScoreBeenAdded = true;
+            }
+            else
+            {
                 _currentTickDuration = 0f;
             }
-        }
-        else
-        {
-            _currentTickDuration = 0f;
         }
     }
 }

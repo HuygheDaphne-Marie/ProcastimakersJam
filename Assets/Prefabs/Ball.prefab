@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3946755236009111400}
   - component: {fileID: 3946755236009111401}
   - component: {fileID: 3946755236009111404}
-  - component: {fileID: 3946755236009111405}
   - component: {fileID: 3946755236009111315}
   - component: {fileID: 3946755236009111313}
   - component: {fileID: 3946755236009111314}
@@ -119,18 +118,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 2
---- !u!114 &3946755236009111405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3946755236009111402}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e29d82a235e55a40a583d1ca79d2dec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!96 &3946755236009111315
 TrailRenderer:
   serializedVersion: 2

@@ -21,9 +21,6 @@ public class RainbowTrim : MonoBehaviour
         else
             _timer = 0;
 
-
-
-
         if (_timer >= WaitTime)
         {
             if(!_hasChanged)
