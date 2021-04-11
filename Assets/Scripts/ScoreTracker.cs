@@ -11,6 +11,8 @@ public class ScoreTracker : MonoBehaviour
     [SerializeField]
     float _tickDuration = 0.5f;
 
+
+
     public static float GameTime = 120;
 
 
@@ -92,4 +94,6 @@ public class ScoreTracker : MonoBehaviour
             }
         }
     }
+
+  
 }

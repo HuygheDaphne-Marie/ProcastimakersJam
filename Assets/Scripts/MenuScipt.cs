@@ -11,8 +11,16 @@ public class MenuScipt : MonoBehaviour
         PlayerColour.RedTeamPlayers = 0;
         ScoreTracker.TeamOneScore = 0;
         ScoreTracker.TeamTwoScore = 0;
-
+        PauseScript._isPaused = false;
+        Time.timeScale = 1;
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void Resume()
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
+        Time.timeScale = 1;
+        PauseScript._isPaused = false;
     }
 
     public void Quit()
