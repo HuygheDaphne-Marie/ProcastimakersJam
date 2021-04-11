@@ -23,6 +23,7 @@ public class CharacterMovement : MonoBehaviour
     Vector2 _inputMovement;
     Vector2 _inputRotation;
     Rigidbody _rigidBody;
+    Transform _bodyTransform;
     bool _hasDashed = false;
     float _inputCooldownTimer = 0f;
     float _dashCooldownTimer = 0f;
@@ -35,6 +36,7 @@ public class CharacterMovement : MonoBehaviour
     void Start()
     {
         _rigidBody = this.GetComponent<Rigidbody>();
+        _bodyTransform = this.transform.GetChild(0).transform;
         _shootScript = this.transform.GetComponent<ShootScript>();
         _dashCooldownTimer = maxDashCooldownTimer;
         _inputCooldownTimer = maxInputCooldownTimer;
@@ -93,12 +95,9 @@ public class CharacterMovement : MonoBehaviour
         {
             Quaternion newRotation = Quaternion.LookRotation(new Vector3(_inputRotation.x, 0f, _inputRotation.y), Vector3.up);
 
-            _rigidBody.rotation = Quaternion.Lerp(_rigidBody.rotation, newRotation, _rotationSpeed);
+            _bodyTransform.rotation = Quaternion.Lerp(_bodyTransform.rotation, newRotation, _rotationSpeed);
         }
-        else
-        {
-            _rigidBody.angularVelocity = Vector3.zero;
-        }
+         _rigidBody.angularVelocity = Vector3.zero;
 
         if (_inputMovement != Vector2.zero)
         {

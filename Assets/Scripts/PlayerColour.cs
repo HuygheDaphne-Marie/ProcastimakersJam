@@ -22,11 +22,15 @@ public class PlayerColour : MonoBehaviour
     private MeshRenderer _baseRenderer;
     private TrailRenderer _trailRenderer;
     private Image _timerImage;
+    private Text _playerNumber;
+    private Image _panelImage;
 
     private PlayerInputManager _playerInputManager;
 
     static public bool IsBallNeutral = true;
     static public bool DoesTeamOneHoldBall = false;
+    static private int _blueteamPlayers = 0;
+    static private int _redTeamPlayers = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -36,21 +40,29 @@ public class PlayerColour : MonoBehaviour
         _bodyRenderer = transform.GetChild(0).GetComponent<MeshRenderer>();
         _baseRenderer = transform.GetChild(1).GetComponent<MeshRenderer>();
         _trailRenderer = GetComponent<TrailRenderer>();
-        _timerImage = transform.GetChild(0).GetChild(1).GetChild(0).GetComponent<Image>(); // dot hell
+        _timerImage = transform.GetChild(2).GetChild(0).GetComponent<Image>(); 
+        _playerNumber = transform.GetChild(2).GetChild(2).GetChild(0).GetComponent<Text>(); // dot hell
+        _panelImage = transform.GetChild(2).GetChild(2).GetComponent<Image>(); // dot hell
 
         if (_playerInputManager.playerCount % 2 != 0)
         {
             _myColor = TeamOneColor;
             _myTeamMaterial = TeamOneMaterial;
             _myTeamBodyMaterials = TeamOneBodyMaterials;
+            _blueteamPlayers++;
+            _playerNumber.text = _blueteamPlayers.ToString();
+            
         }
         else
         {
             _myColor = TeamTwoColor;
             _myTeamMaterial = TeamTwoMaterial;
             _myTeamBodyMaterials = TeamTwoBodyMaterials;
-        }
+            _redTeamPlayers++;
+            _playerNumber.text = _redTeamPlayers.ToString();
 
+        }
+        _panelImage.color = _myColor;
         SetInstanceColorToTeamColor();
     }
 
