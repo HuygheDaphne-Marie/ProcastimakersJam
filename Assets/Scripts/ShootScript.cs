@@ -100,21 +100,23 @@ public class ShootScript : MonoBehaviour
             GameObject.Find("SoundManager").GetComponent<AudioSource>().pitch = 1;
             GameObject.Find("SoundManager").GetComponent<SoundManagerScript>().PlayShoot();
             _canHold = false;
+
+            var gamepads = Gamepad.all;
+            foreach (Gamepad element in gamepads)
+            {
+                if (element.leftTrigger.wasPressedThisFrame)
+                {
+                    _gamepad = element;
+                    break;
+                }
+            }
+            _gamepad.SetMotorSpeeds(_rumbleStrength, _rumbleStrength);
+            _isRumbling = true;
         }
     }
 
     private void OnShoot(InputValue value)
     {
-        var gamepads = Gamepad.all;
-        foreach (Gamepad element in gamepads)
-        {
-            if(element.leftTrigger.wasPressedThisFrame)
-            {
-                _gamepad = element;
-            }
-        }
-        _gamepad.SetMotorSpeeds(_rumbleStrength, _rumbleStrength);
-        _isRumbling = true;
         Shoot();
     }
 
