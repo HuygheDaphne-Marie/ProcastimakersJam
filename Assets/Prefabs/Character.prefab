@@ -595,7 +595,7 @@ MonoBehaviour:
   _maxTimeBallCanBeHeld: 1
   _timerImage: {fileID: 7724046502195063861}
   _rumbleTime: 0.3
-  _rumbleStrength: 0.1
+  _rumbleStrength: 0.3
   _isHolding: 0
   _maxHoldCooldown: 1
 --- !u!135 &5210546335216040014

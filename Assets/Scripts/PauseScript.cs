@@ -25,6 +25,7 @@ public class PauseScript : MonoBehaviour
         if (!_isPaused)
         {
             Time.timeScale = 0;
+
             _isPaused = true;
             _PauseMenu.transform.GetChild(0).gameObject.SetActive(true);
         }

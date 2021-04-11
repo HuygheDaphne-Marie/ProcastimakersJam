@@ -38,10 +38,16 @@ public class ScoreTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!_startGame)
+        {
+            Time.timeScale = 1;
+            PauseScript._isPaused = false;
+        }
         if (_startGame)
         {
             HasScoreBeenAdded = false;
             GameTime -= Time.deltaTime;
+
             if (GameTime <= 0f)
             {
                 SceneManager.LoadScene("EndScreen");

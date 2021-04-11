@@ -282,7 +282,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1110029248}
         m_TargetAssemblyTypeName: TutorialScript, InputDefinition
-        m_MethodName: OnControlsPress
+        m_MethodName: OnTutorialPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -768,7 +768,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1110029248}
         m_TargetAssemblyTypeName: TutorialScript, InputDefinition
-        m_MethodName: OnTutorialPress
+        m_MethodName: OnControlsPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

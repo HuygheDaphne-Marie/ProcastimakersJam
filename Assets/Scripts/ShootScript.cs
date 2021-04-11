@@ -16,7 +16,7 @@ public class ShootScript : MonoBehaviour
     [SerializeField]
     float _rumbleTime = 0.3f;
     [SerializeField]
-    float _rumbleStrength = 0.1f;
+    float _rumbleStrength = 0.3f;
 
     public bool _isHolding;
     float _holdCooldown = 0.5f;
