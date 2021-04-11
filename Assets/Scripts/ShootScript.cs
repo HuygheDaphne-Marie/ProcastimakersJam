@@ -13,6 +13,10 @@ public class ShootScript : MonoBehaviour
     float _maxTimeBallCanBeHeld = 5f;
     [SerializeField]
     Image _timerImage;
+    [SerializeField]
+    float _rumbleTime = 0.3f;
+    [SerializeField]
+    float _rumbleStrength = 0.1f;
 
     public bool _isHolding;
     float _holdCooldown = 0.5f;
@@ -21,6 +25,9 @@ public class ShootScript : MonoBehaviour
     bool _canHold = true;
     GameObject _ball;
     float _timeBallHeld = 0f;
+    float _currentRumbleTimer = 0f;
+    bool _isRumbling = false;
+    Gamepad _gamepad;
 
     Animator _bodyAnimator;
 
@@ -40,7 +47,7 @@ public class ShootScript : MonoBehaviour
             _timeBallHeld -= Time.deltaTime;
             _timerImage.fillAmount = _timeBallHeld / _maxTimeBallCanBeHeld;
         }
-        if(_timeBallHeld <= 0)
+        if (_timeBallHeld <= 0)
         {
             Shoot();
         }
@@ -51,6 +58,16 @@ public class ShootScript : MonoBehaviour
             {
                 _canHold = true;
                 _holdCooldown = _maxHoldCooldown;
+            }
+        }
+        if (_isRumbling)
+        {
+            _currentRumbleTimer += Time.deltaTime;
+            if (_currentRumbleTimer >= _rumbleTime)
+            {
+                _currentRumbleTimer = 0f;
+                _isRumbling = false;
+                _gamepad.PauseHaptics();
             }
         }
     }
@@ -88,8 +105,17 @@ public class ShootScript : MonoBehaviour
 
     private void OnShoot(InputValue value)
     {
+        var gamepads = Gamepad.all;
+        foreach (Gamepad element in gamepads)
+        {
+            if(element.leftTrigger.wasPressedThisFrame)
+            {
+                _gamepad = element;
+            }
+        }
+        _gamepad.SetMotorSpeeds(_rumbleStrength, _rumbleStrength);
+        _isRumbling = true;
         Shoot();
-        Debug.Log("Shoot");
     }
 
 
